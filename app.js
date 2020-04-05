@@ -3,6 +3,7 @@ const path = require("path");
 const indexRouter = require("./routes/index");
 const logger = require("morgan");
 const configurePassport = require("./configurePassport.js");
+const passportRoutes = require("./routes/passportRoutes.js");
 const app = express();
 
 // view engine setup
@@ -17,13 +18,10 @@ app.use(express.static(path.join(__dirname, "public")));
 configurePassport(app);
 
 app.use("/", indexRouter);
-
-//app.use("/", passportRouter);
+app.use("/", passportRoutes);
 
 // catch 404 and forward to error handler
 // BORRÉ ESTE CÓDIGO PORQUE NO ESTAMOS USANDO HTTP ERRORS
-
-
 
 // error handler
 /*app.use(function (err, req, res) {

@@ -1,8 +1,8 @@
 const MongoClient = require("mongodb").MongoClient;
 const ObjectID = require("mongodb").ObjectID;
+require("dotenv").config();
 
-const url =
-  "";
+const url = process.env.DB_URL || "http://localhost:27017";
 
 function MongoUtils() {
   const mu = {};
