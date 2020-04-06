@@ -25,4 +25,8 @@ router.get("/profile",
     res.render("profile", { user: req.user });
   });
 
+router.get( "/getUser", (req, res) => {
+  return res.json(req.user || null);
+});
+
 module.exports = router;
