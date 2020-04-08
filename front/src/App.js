@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-
+import Navbar from "./components/Navbar.js";
 import Login from "./components/Login.js";
 
 const App = () => {
@@ -15,6 +15,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <Navbar></Navbar>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h2>Quédate en casa</h2>
