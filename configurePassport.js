@@ -2,6 +2,7 @@ const passport = require("passport");
 const Strategy = require("passport-local").Strategy;
 var flash = require("connect-flash");
 const db = require("./db/MongoUtils");
+const bu = require("./db/BcryptUtils.js");
 
 // Configure the local strategy for use by Passport.
 //
@@ -11,11 +12,11 @@ const db = require("./db/MongoUtils");
 // will be set at `req.user` in route handlers after authentication.
 passport.use(new Strategy(
   function(username, password, cb) {
-    console.log("Entró a localStrategy a validar: ", username, ":", password);
+    console.log("OJOOO! Entró a localStrategy a validar: ", username, ":", password);
     db.users.findByUsername(username, function(err, user) {
       if (err) { return cb(err); }
       if (!user) { return cb(null, false); }
-      if (user.password != password) { return cb(null, false); }
+      if (!bu.Accounts.validPassword(user, password)) { return cb(null, false); }
       return cb(null, user);
     });
   }));

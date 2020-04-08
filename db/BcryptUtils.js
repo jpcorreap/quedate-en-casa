@@ -15,9 +15,8 @@ function BcryptUtils() {
   };
 
   // checking if password is valid
-  bu.Accounts.validPassword = function (password) {
-    return bcrypt.compareSync(password, this.account_key);
-  };
+  bu.Accounts.validPassword = (user, password) =>
+    bcrypt.compareSync(password, user.password);
 
   bu.Accounts.associate = function (models) {
     bu.Accounts.hasMany(models.Items, {

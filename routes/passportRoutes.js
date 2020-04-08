@@ -8,12 +8,20 @@ router.get("/login", function (req, res) {
   res.render("login");
 });
 
-/*router.post("/login", async (req, res) => {
+router.post(
+  "/login",
+  passport.authenticate("local", { failureRedirect: "/login" }),
+  function (req, res) {
+    res.redirect("/");
+  }
+);
+
+router.post("/login", (req, res) => {
   console.log(req.body);
-  bd.users.findByUsername(req.body.username).then(user => {
+  bd.users.findByUsername(req.body.username, ).then(user => {
     try {
-      console.log("se trajo al usuario hpta", user);
-      if ( bcrypt.compare(req.body.password, user.password)){
+      console.log("se trajo al usuario", user);
+      if ( bu.Accounts.validPassword(req.body.password, user.password)){
         passport.authenticate("local", { failureRedirect: "/login" }),
         function (req, res) {
           res.redirect("/");
@@ -23,7 +31,7 @@ router.get("/login", function (req, res) {
       res.status(500).send();
     }
   });
-});*/
+});
 
 router.get("/logout", function (req, res) {
   req.logout();
@@ -48,8 +56,9 @@ router.get("/register", (req, res) => {
 
 router.post("/register", (req, res) => {
   try {
-    bd.users.findByUsername(req.body.name, () => {}).then((user) => {
-      if (user != null) {
+    bd.users.findByUsername(req.body.name, (nada,user) => {
+      console.log( "Llegó el usuario ", user );
+      if (user == null) {
         let hashedPassword = bu.Accounts.generateHash(req.body.password);
         bd.users
           .create(req.body.name, hashedPassword)
