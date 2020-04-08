@@ -2,8 +2,7 @@ const MongoClient = require("mongodb").MongoClient;
 const ObjectID = require("mongodb").ObjectID;
 require("dotenv").config();
 
-
-const url = "mongodb+srv://vaca3245:vaca2299@cluster0-3mnil.mongodb.net/test?retryWrites=true&w=majority";
+const url = process.env.DB_URL;
 
 function MongoUtils() {
   const mu = {};
@@ -21,27 +20,14 @@ function MongoUtils() {
   // ----------------------
   mu.users = {};
 
-  // Get users of MongoDB connection
-  mu.users.find = (query) =>
-    mu.connect().then((client) =>
-      client
-        .db("quedateEnCasa")
-        .collection("usuarios")
-        .find(query)
-        .finally(() => client.close())
-    );
-
-
-  
-
-
   //creates a new user of the application
-  mu.users.create = user=>
-    mu.connect().then(client => {
+  mu.users.create = (username, password) =>
+    mu.connect().then((client) => {
+      console.log("Se conectó a la base de datos y va a guardar ", username, ":", password );
       const usuarios = client.db("quedateEnCasa").collection("usuarios");
-      
+
       return usuarios
-        .insertOne(user)
+        .insertOne({ "username": username, "password": password })
         .finally(() => client.close());
     });
 
@@ -51,7 +37,7 @@ function MongoUtils() {
       const usuarios = client.db("quedateEnCasa").collection("usuarios");
 
       return usuarios
-        .findOne({ "user": user })
+        .findOne({ "username": user })
         .finally(() => client.close())
         .then((user) => {
           console.log("Encontró al usuario ", user);
@@ -68,23 +54,12 @@ function MongoUtils() {
       return usuarios
         .findOne({ _id: new ObjectID(id) })
         .finally(() => client.close())
-        .then((user) => { cb(null, user); 
+        .then((user) => {
+          cb(null, user);
         });
     });
 
-  // Inserts an username into db
-  mu.users.insert = (query) =>
-    mu.connect().then((client) =>
-      client
-        .db("quedateEnCasa")
-        .collection("usuarios")
-        .insertOne({ "usernam": query.user, "password": query.password })
-        .finally(() => client.close())
-    );
-
   return mu;
 }
-
-
 
 module.exports = MongoUtils();

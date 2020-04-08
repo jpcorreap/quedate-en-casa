@@ -1,8 +1,9 @@
 const express = require("express");
 const path = require("path");
-const indexRouter = require("./routes/index");
 const logger = require("morgan");
+const indexRouter = require("./routes/index");
 const configurePassport = require("./configurePassport.js");
+const configureBcrypt = require("./configureBcrypt.js");
 const passportRoutes = require("./routes/passportRoutes.js");
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 configurePassport(app);
+configureBcrypt(app);
 
 app.use("/", indexRouter);
 app.use("/", passportRoutes);
