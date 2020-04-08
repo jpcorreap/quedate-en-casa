@@ -2,7 +2,8 @@ const MongoClient = require("mongodb").MongoClient;
 const ObjectID = require("mongodb").ObjectID;
 require("dotenv").config();
 
-const url = process.env.DB_URL || "http://localhost:27017";
+
+const url = "mongodb+srv://vaca3245:vaca2299@cluster0-3mnil.mongodb.net/test?retryWrites=true&w=majority";
 
 function MongoUtils() {
   const mu = {};
@@ -30,13 +31,27 @@ function MongoUtils() {
         .finally(() => client.close())
     );
 
+
+  
+
+
+  //creates a new user of the application
+  mu.users.create = user=>
+    mu.connect().then(client => {
+      const usuarios = client.db("quedateEnCasa").collection("usuarios");
+      
+      return usuarios
+        .insertOne(user)
+        .finally(() => client.close());
+    });
+
   // Get a specific user by username
   mu.users.findByUsername = (user, cb) =>
     mu.connect().then((client) => {
       const usuarios = client.db("quedateEnCasa").collection("usuarios");
 
       return usuarios
-        .findOne({ "username": user })
+        .findOne({ "user": user })
         .finally(() => client.close())
         .then((user) => {
           console.log("Encontró al usuario ", user);
@@ -69,5 +84,7 @@ function MongoUtils() {
 
   return mu;
 }
+
+
 
 module.exports = MongoUtils();
