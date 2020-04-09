@@ -35,7 +35,7 @@ router.post("/login", (req, res) => {
 
 router.get("/logout", function (req, res) {
   req.logout();
-  res.redirect("/");
+  res.redirect("http://localhost:3000/");
 });
 
 router.get(

@@ -6,6 +6,7 @@ module.exports = {
     },
     "extends": [
         "eslint:recommended",
+        "prettier",
         "plugin:react/recommended"
     ],
     "globals": {
@@ -24,7 +25,7 @@ module.exports = {
     ],
     "rules": {
         "indent": [
-            "error",
+            "warn",
             2
         ],
         "linebreak-style": [
@@ -38,6 +39,7 @@ module.exports = {
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "no-console": 0
     }
 };
