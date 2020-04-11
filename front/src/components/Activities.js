@@ -5,12 +5,15 @@ const Activities = (props) => {
   const [actividades, setActividades]= useState([])
   
   useEffect(() => {
+    let isSubscribed =true;
     fetch("/activities")
       .then((res) => res.json())
       .then((actividades) => {
-        setActividades(actividades);
-        console.log("fetched data from activities ", actividades);
+        if(isSubscribed){setActividades(actividades);
+          console.log("fetched data from activities ", actividades);
+        }
       });
+      return () => isSubscribed=false;
   }, []);
 
 
