@@ -1,5 +1,6 @@
 import React, { useState, useEffect }  from "react";
 import Login from "./Login.js";
+import Register from "./Register.js";
 
 const Navbar = (props) => {
   const [user, setUser] = React.useState(props.user);
@@ -13,10 +14,11 @@ const Navbar = (props) => {
   };
 
   const mostrarRegistro = () => {
-    document.getElementById("menuLogin").style = "visibility:" + ( registerVisible ? "hidden" : "visible" );
+    document.getElementById("menuRegister").style = "visibility:" + ( registerVisible ? "hidden" : "visible" );
     registerVisible = !registerVisible;
   };
 
+  
   useEffect(() => {
     fetch("/getUser")
       .then((res) => res.json())
@@ -83,7 +85,7 @@ const Navbar = (props) => {
                     className="dropdown-menu"
                     aria-labelledby="navbarDropdown"
                   >
-                    <a className="dropdown-item" href="/">
+                    <a className="dropdown-item" href="./Guardadas">
                       Mis actividades
                     </a>
                     <div className="dropdown-divider"></div>
@@ -102,6 +104,7 @@ const Navbar = (props) => {
       </nav>
 
       <Login></Login>
+      <Register></Register>
     </div>
   );
 };

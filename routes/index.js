@@ -13,15 +13,21 @@ router.get("/register", (req, res) => {
 
 router.post("/register", (req, res) => {
   try {
-    bd.users.findByUsername(req.body.name, (nada, user) => {
+    bd.users.findByUsername(req.body.username, (nada, user) => {
       console.log("Llegó el usuario ", user);
-      if (user == null) {
-        let hashedPassword = bu.Accounts.generateHash(req.body.password);
-        bd.users
-          .create(req.body.name, hashedPassword)
-          .then(res.redirect("/login"));
-      } else {
-        console.log(req.body.name, "already exists!");
+      if(req.body.password == req.body.passwordC) { 
+        if (user == null  ) {
+          let hashedPassword = bu.Accounts.generateHash(req.body.password);
+          bd.users
+            .create(req.body.username, hashedPassword)
+            .then(res.redirect("/login"));
+        } else {
+          console.log(req.body.username, "already exists!");
+          res.redirect("/register");
+        }
+      }
+      else{
+        console.log(req.body.username, " las contrasenas no coinciden!");
         res.redirect("/register");
       }
     });
