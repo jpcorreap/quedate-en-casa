@@ -43,6 +43,11 @@ const Navbar = (props) => {
             >
               <ul className="navbar-nav">
               <li className="nav-item">
+                  <a className="nav-link" href="./">
+                    Home
+                  </a>
+                </li>
+              <li className="nav-item">
                   <a className="nav-link" href="./Activities">
                     Actividades
                   </a>
@@ -82,6 +87,10 @@ const Navbar = (props) => {
                   >
                     <a className="dropdown-item" href="./Activities">
                       Mis actividades
+                    </a>
+                    <div className="dropdown-divider"></div>
+                    <a className="dropdown-item" href="./Custom">
+                      Crear actividad
                     </a>
                     <div className="dropdown-divider"></div>
                     <a

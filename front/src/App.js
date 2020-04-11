@@ -4,6 +4,7 @@ import "./App.css";
 import Navbar from "./components/Navbar.js";
 import About from "./components/About.js";
 import Activities from "./components/Activities.js";
+import Custom from "./components/Custom.js";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -31,6 +32,7 @@ const App = () => {
          <Route exact path='/' component={About}/>
          <Route exact path='/about' component={About}/>
          <Route exact path='/activities' component={()=>(<Activities user={user}/>)}/>
+         <Route exact path='/custom' component={Custom}/>
         </Switch>
       </BrowserRouter>
     </div>
