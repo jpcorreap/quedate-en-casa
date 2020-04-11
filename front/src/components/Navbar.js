@@ -75,7 +75,7 @@ const Navbar = (props) => {
                     className="dropdown-menu"
                     aria-labelledby="navbarDropdown"
                   >
-                    <a className="dropdown-item" href="./misActividades.html">
+                    <a className="dropdown-item" href="./Activities">
                       Mis actividades
                     </a>
                     <div className="dropdown-divider"></div>

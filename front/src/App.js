@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
+import {BrowserRouter, Route, Switch } from 'react-router-dom';
 import "./App.css";
 import Navbar from "./components/Navbar.js";
 import About from "./components/About.js";
@@ -24,10 +24,13 @@ const App = () => {
       ) : (
         <Navbar autenticado={false} />
       )}
-      <div className="App-header">
-        <About />
-      </div>
-      <Activities />
+      <BrowserRouter>
+        <Switch>
+         <Route exact path='/' component={About} />
+         <Route exact path='/about' component={About} />
+         <Route exact path='/activities' component={Activities} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 };
