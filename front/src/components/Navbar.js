@@ -1,12 +1,12 @@
-import React, { useState, useEffect }  from "react";
+import React  from "react";
 import Login from "./Login.js";
 import Register from "./Register.js";
 
 const Navbar = (props) => {
-  const [user, setUser] = React.useState(props.user);
   
   let loginVisible = false;
   let registerVisible = false;
+ 
 
   const mostrarLogin = () => {
     document.getElementById("menuLogin").style = "visibility:" + ( loginVisible ? "hidden" : "visible" );
@@ -17,16 +17,6 @@ const Navbar = (props) => {
     document.getElementById("menuRegister").style = "visibility:" + ( registerVisible ? "hidden" : "visible" );
     registerVisible = !registerVisible;
   };
-
-  
-  useEffect(() => {
-    fetch("/getUser")
-      .then((res) => res.json())
-      .then((user) => {
-        setUser(user);
-        console.log("Componente Navbar: setUser ", user);
-      });
-  }, []);
 
   return (
     <div>
@@ -46,7 +36,7 @@ const Navbar = (props) => {
           className="collapse navbar-collapse justify-content-end"
           id="navbarSupportedContent"
         >
-          {!user ? (
+          {props.autenticado === false ? (
             <div
               className="collapse navbar-collapse justify-content-end"
               id="navbarSupportedContent"
@@ -79,13 +69,13 @@ const Navbar = (props) => {
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                    {user.username}
+                   aiuda
                   </a>
                   <div
                     className="dropdown-menu"
                     aria-labelledby="navbarDropdown"
                   >
-                    <a className="dropdown-item" href="./Guardadas">
+                    <a className="dropdown-item" onClick="./Guardadas" href="./Guardadas">
                       Mis actividades
                     </a>
                     <div className="dropdown-divider"></div>
