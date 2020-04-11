@@ -69,13 +69,13 @@ const Navbar = (props) => {
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                   aiuda
+                   {props.username}
                   </a>
                   <div
                     className="dropdown-menu"
                     aria-labelledby="navbarDropdown"
                   >
-                    <a className="dropdown-item" onClick="./Guardadas" href="./Guardadas">
+                    <a className="dropdown-item" href="./misActividades.html">
                       Mis actividades
                     </a>
                     <div className="dropdown-divider"></div>
