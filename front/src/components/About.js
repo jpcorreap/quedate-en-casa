@@ -7,12 +7,11 @@ const About = () => {
       <br />
       <div className="container">
         <div className="row">
-          <h1>#MeQuedoEnCasa</h1>
+          <h1>#Bienvenidos a quedate en casa</h1>
         </div>
         <div className="row">
           <p>
-            En estos tiempos de cuarentena te recomendamos una serie de
-            actividades por realizar desde tu hogar.
+           
           </p>
         </div>
       </div>

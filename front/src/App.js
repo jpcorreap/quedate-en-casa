@@ -12,8 +12,10 @@ const App = () => {
     fetch("/getUser")
       .then((res) => res.json())
       .then((user) => {
+        if(user){
         setUser(user);
         console.log("Seteó al usuario ", user);
+        }
       });
   }, []);
 
@@ -26,9 +28,9 @@ const App = () => {
       )}
       <BrowserRouter>
         <Switch>
-         <Route exact path='/' component={About} />
-         <Route exact path='/about' component={About} />
-         <Route exact path='/activities' component={Activities} />
+         <Route exact path='/' component={About}/>
+         <Route exact path='/about' component={About}/>
+         <Route exact path='/activities' component={()=>(<Activities user={user}/>)}/>
         </Switch>
       </BrowserRouter>
     </div>
