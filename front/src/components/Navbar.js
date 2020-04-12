@@ -23,7 +23,7 @@ const Navbar = (props) => {
       <nav className="navbar navbar-expand-lg sticky-top">
         <a id="title" className="navbar-brand" href="/">
           <img
-            src="front\public\stayHome.jpg"
+            src="https://raw.githubusercontent.com/jpcorreap/quedate-en-casa/master/front/public/stayHome.jpg"
             width="30"
             height="30"
             className="d-inline-block align-top"

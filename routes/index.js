@@ -60,11 +60,38 @@ router.get("/save/:userID/:activityID", (req, res) => {
 
 // Create and persist new personal activity for an specific user
 router.post("/savePersonalActivity/:userID", (req, res) => {
+  bd.users.savePersonalActivity(req.params.userID, req.body).then((aux) => {
+    res.json(aux);
+  });
+});
+
+// Delete saved activity for an specific user
+router.get("/deleteSavedActivity/:userID/:activityID", (req, res) => {
   bd.users
-    .savePersonalActivity(req.params.userID, req.body)
-    .then((aux) => {
-      res.json(aux);
+    .deleteSavedActivity(req.params.userID, req.params.activityID)
+    .then(() => res.redirect("http://localhost:3000/MyActivities"));
+});
+
+// Delete personal activity for an specific user
+router.get("/deletePersonalActivity/:userID/:nameActivity", (req, res) => {
+  bd.users
+    .deletePersonalActivity(req.params.userID, req.params.nameActivity)
+    .then(() => res.redirect("http://localhost:3000/MyActivities"));
+});
+
+// Get all activities specified in JSON file
+router.get("/findActivitiesByIDs/:ids", (req, res) => {
+  bd.actividades.getAll().then((activities) => {
+    let retornar = [];
+
+    activities.forEach((activitie) => {
+      if (req.params.ids.includes(new String(activitie._id))) {
+        retornar.push(activitie);
+      }
     });
+
+    res.json(retornar);
+  });
 });
 
 module.exports = router;

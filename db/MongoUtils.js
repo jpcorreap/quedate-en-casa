@@ -105,6 +105,33 @@ function MongoUtils() {
         .finally(() => client.close())
     );
 
+  // Delete an activity of a specific user
+  mu.users.deleteSavedActivity = (userID, activityID) =>
+    mu.connect().then((client) =>
+      client
+        .db(dbName)
+        .collection("usuarios")
+        .updateOne(
+          { _id: new ObjectID(userID) },
+          { $pull: { savedActivities: activityID } }
+        )
+        .finally(() => client.close())
+    );
+
+  // Delete an activity of a specific user
+  mu.users.deletePersonalActivity = (userID, activityName) =>
+    mu.connect().then((client) =>
+      client
+        .db(dbName)
+        .collection("usuarios")
+        .updateOne(
+          { _id: new ObjectID(userID) },
+          { $pull: { savedActivities: { $in: { nombre: activityName } } } },
+          { multi: true }
+        )
+        .finally(() => client.close())
+    );
+
   return mu;
 }
 
