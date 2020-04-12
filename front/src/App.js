@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar.js";
 import About from "./components/About.js";
 import Activities from "./components/Activities.js";
 import Custom from "./components/Custom.js";
+import MyActivities from "./components/MyActivities.js";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -30,9 +31,10 @@ const App = () => {
       <BrowserRouter>
         <Switch>
          <Route exact path='/' component={About}/>
-         <Route exact path='/about' component={About}/>
-         <Route exact path='/activities' component={()=>(<Activities user={user}/>)}/>
-         <Route exact path='/custom' component={Custom}/>
+         <Route exact path='/About' component={About}/>
+         <Route exact path='/Activities' component={()=>(<Activities user={user}/>)}/>
+         <Route exact path='/MyActivities' component={()=>(<MyActivities user={user}/>)}/>
+         <Route exact path='/Custom' component={Custom}/>
         </Switch>
       </BrowserRouter>
     </div>

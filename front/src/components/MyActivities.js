@@ -1,13 +1,13 @@
 import React from "react";
 
-const Guardadas = () => {
+const MyActivities = () => {
   return (
     <div className="Guardadas">
       <div className="container" id="menuGuardadas">
         <div className="container">
           <div classname="Row" id="titulo">
               <h1>
-                Aca se van a ver las actividades guardadas. !!!
+                Aca se van a ver las actividades guardadas por mi perro jijueputaaa. !!!
               </h1>
           </div>
         </div>
@@ -16,4 +16,4 @@ const Guardadas = () => {
   );
 };
 
-export default Guardadas;
+export default MyActivities;
