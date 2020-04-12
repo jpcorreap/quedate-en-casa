@@ -3,6 +3,21 @@ import React, { useState, useEffect } from "react";
 const Activities = (props) => {
   const [actividades, setActividades] = useState([]);
 
+  const filtrarActividades = () => {
+    let filtro = document.getElementById("barraBusquedaCategoria").value;
+
+    // Oculta las actividades que no se desean ver y deja visibles las de interés
+    actividades.forEach((actividad) => {
+      if (actividad.categorias.includes(filtro)) {
+        document.getElementById(actividad._id).style.visibility = "visible";
+        document.getElementById(actividad._id).style.position = "relative";
+      } else {
+        document.getElementById(actividad._id).style.visibility = "hidden";
+        document.getElementById(actividad._id).style.position = "absolute";
+      }
+    });
+  };
+
   useEffect(() => {
     let isSubscribed = true;
     fetch("/activities")
@@ -18,15 +33,37 @@ const Activities = (props) => {
 
   return (
     <div className="Activities">
-      <br />
-      <br />
       <div className="container">
-        <div className="row">
+        <h1>
+          <br />
+        </h1>
+        <div className="row justify-content-between">
           <h1>
-            <strong>#QuédateEnCasa</strong>
+            <strong>Actividades gratuitas por realizar</strong>
+          </h1>
+          <div className="form-inline">
+            <input
+              className="form-control mr-sm-2"
+              type="search"
+              placeholder="Categoría"
+              aria-label="Search"
+              id="barraBusquedaCategoria"
+              autoFocus
+            />
+            <button
+              onClick={filtrarActividades}
+              className="btn btn-outline-success my-2 my-sm-0"
+            >
+              Filtrar
+            </button>
+          </div>
+          <h1>
+            <br />
           </h1>
         </div>
       </div>
+      <br />
+      <br />
       {props.user !== null ? (
         <div className="container">
           <div className="row justify-content-center">
@@ -34,6 +71,7 @@ const Activities = (props) => {
               <div
                 className="card border-primary mb-3 col-md-3"
                 key={actividad._id}
+                id={actividad._id}
               >
                 <div className="card-header">
                   <div className="row">
@@ -81,6 +119,7 @@ const Activities = (props) => {
               <div
                 className="card border-primary mb-3 col-md-3"
                 key={actividad._id}
+                id={actividad._id}
               >
                 <div className="card-header">
                   <div className="row">
