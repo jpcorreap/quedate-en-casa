@@ -7,7 +7,7 @@ const MyActivities = () => {
         <div className="container">
           <div classname="Row" id="titulo">
               <h1>
-                Aca se van a ver las actividades guardadas por mi perro jijueputaaa. !!!
+                Aca se van a ver las actividades guardadas!!!
               </h1>
           </div>
         </div>

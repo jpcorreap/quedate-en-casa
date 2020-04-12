@@ -33,29 +33,6 @@ function MongoUtils() {
         .finally(() => client.close())
     );
 
-  // ESTA PENDIENTE
-  // Get all personal activities of an specific user
-  mu.actividades.getByUserID = (userID) =>
-    mu.connect().then((client) =>
-      client
-        .db(dbName)
-        .collection("actividades")
-        .find({ _id: userID })
-        .toArray()
-        .finally(() => client.close())
-    );
-
-  // ESTA PENDIENTE
-  // Inserts one personal activitie on database
-  mu.actividades.insert = (query) =>
-    mu.connect().then((client) =>
-      client
-        .db(dbName)
-        .collection("usuarios")
-        .updateOne(query)
-        .finally(() => client.close())
-    );
-
   // ----------------------
   // Users operations
   // ----------------------
@@ -63,47 +40,39 @@ function MongoUtils() {
 
   // Create a new user of the application
   mu.users.create = (username, password) =>
-    mu.connect().then((client) => {
-      console.log(
-        "Se conectó a la base de datos y va a guardar ",
-        username,
-        ":",
-        password
-      );
-      const usuarios = client.db(dbName).collection("usuarios");
-
-      return usuarios
+    mu.connect().then((client) =>
+      client
+        .db(dbName)
+        .collection("usuarios")
         .insertOne({
           username: username,
           password: password,
           savedActivities: [],
           personalActivities: [],
         })
-        .finally(() => client.close());
-    });
+        .finally(() => client.close())
+    );
 
   // Get a specific user by username
   mu.users.findByUsername = (user, cb) =>
-    mu.connect().then((client) => {
-      const usuarios = client.db(dbName).collection("usuarios");
-
-      return usuarios
+    mu.connect().then((client) =>
+      client
+        .db(dbName)
+        .collection("usuarios")
         .findOne({ username: user })
         .finally(() => client.close())
         .then((user) => {
-          console.log("Encontró al usuario ", user);
           cb(null, user);
-        });
-    });
+        })
+    );
 
   // Get a specific user by id
   mu.users.findOneById = (id, cb) =>
     mu.connect().then((client) => {
-      const usuarios = client.db("quedateEnCasa").collection("usuarios");
-
-      // when searching by id we need to create an ObjectID
-      return usuarios
-        .findOne({ _id: new ObjectID(id) })
+      client
+        .db("quedateEnCasa")
+        .collection("usuarios")
+        .findOne({ _id: new ObjectID(id) }) // when searching by id we need to create an ObjectID
         .finally(() => client.close())
         .then((user) => {
           cb(null, user);
@@ -112,20 +81,29 @@ function MongoUtils() {
 
   // Save an activity for an specific user
   mu.users.saveActivity = (userID, activityID) =>
-    mu.connect().then((client) => {
-      const usuarios = client.db(dbName).collection("usuarios");
+    mu.connect().then((client) =>
+      client
+        .db(dbName)
+        .collection("usuarios")
+        .updateOne(
+          { _id: new ObjectID(userID) },
+          { $push: { savedActivities: activityID } }
+        )
+        .finally(() => client.close())
+    );
 
-      console.log(
-        "HOLAAA \n Va a agreagarle al arreglo ",
-        userID,
-        ":",
-        activityID
-      );
-
-      return usuarios
-        .updateOne({ _id: new ObjectID(userID) }, { $push: { savedActivities: activityID } })
-        .finally(() => client.close());
-    });
+  // Save a personal activity for an specific user
+  mu.users.savePersonalActivity = (userID, personalActivity) =>
+    mu.connect().then((client) =>
+      client
+        .db(dbName)
+        .collection("usuarios")
+        .updateOne(
+          { _id: new ObjectID(userID) },
+          { $push: { personalActivities: personalActivity } }
+        )
+        .finally(() => client.close())
+    );
 
   return mu;
 }
