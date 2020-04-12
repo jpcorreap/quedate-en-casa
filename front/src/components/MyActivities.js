@@ -1,6 +1,6 @@
 import React from "react";
 
-const MyActivities = () => {
+const MyActivities = (props) => {
   return (
     <div className="Guardadas">
       <div className="container" id="menuGuardadas">

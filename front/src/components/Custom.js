@@ -18,6 +18,9 @@ const Custom = (props) => {
   return (
     <div className="container justify-content-center">
       <br />
+      <h1>
+        hpta  {props.userId}
+      </h1>
       <br />
       <br />
       <div className="card">

@@ -34,7 +34,12 @@ const App = () => {
          <Route exact path='/About' component={About}/>
          <Route exact path='/Activities' component={()=>(<Activities user={user}/>)}/>
          <Route exact path='/MyActivities' component={()=>(<MyActivities user={user}/>)}/>
-         <Route exact path='/Custom' component={Custom}/>
+         {user ? (
+         <Route exact path='/Custom' component={()=>(<Custom user={user} userId={user._id} />)}/>
+         ) : (
+           <h1>loggese mijo</h1>
+         )
+         }
         </Switch>
       </BrowserRouter>
     </div>
