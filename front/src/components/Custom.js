@@ -2,25 +2,33 @@ import React from "react";
 
 const Custom = (props) => {
   const saveActivity = () => {
-    let formulario = document.getElementById("formNuevaActividadPersonal");
+    let inTitulo = document.getElementById("titulo").value;
+    let inDescripcion = document.getElementById("descripcion").value;
+    let inCategorias = document.getElementById("categorias").value;
+    let inLink = document.getElementById("link").value;
 
-    console.log("GetElementByID: ", formulario);
+    const aux = JSON.stringify({
+      titulo: inTitulo,
+      descripcion: inDescripcion,
+      categorias: inCategorias,
+      link: inLink,
+    });
 
-    fetch("/savePersonalActivity/123" /*+ "ESTÁ PENDIENTE TENER EL USUARIO DESDE AQUÍ"*/, {
+    const aux2 = aux.replace('"[', "[");
+    const aux3 = aux.replace(']"', "]");
+
+    fetch("/savePersonalActivity/" + props.userId, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: formulario,
-    });
+      body: aux3,
+    }).then(() => (window.location = "/MyActivities"));
   };
 
   return (
     <div className="container justify-content-center">
       <br />
-      <h1>
-        hpta  {props.userId}
-      </h1>
       <br />
       <br />
       <div className="card">
@@ -62,10 +70,10 @@ const Custom = (props) => {
             <div className="form-group">
               <div className="row">
                 <label className="col-4">
-                  Categorías (separadas por comas):
+                  Categorías ( Categoría1[,Categoría2,...]):
                 </label>
                 <input
-                  id="descripcion"
+                  id="categorias"
                   className="form-control col"
                   type="text"
                   name="categorias"
@@ -77,7 +85,7 @@ const Custom = (props) => {
               <div className="row">
                 <label className="col-4">Link:</label>
                 <input
-                  id="descripcion"
+                  id="link"
                   className="form-control col"
                   type="text"
                   name="link"

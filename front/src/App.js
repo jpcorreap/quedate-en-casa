@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar.js";
 import About from "./components/About.js";
@@ -14,9 +14,9 @@ const App = () => {
     fetch("/getUser")
       .then((res) => res.json())
       .then((user) => {
-        if(user){
-        setUser(user);
-        console.log("Seteó al usuario ", user);
+        if (user) {
+          setUser(user);
+          console.log("Seteó al usuario ", user);
         }
       });
   }, []);
@@ -24,24 +24,51 @@ const App = () => {
   return (
     <div className="App">
       {user ? (
-        <Navbar autenticado={true} username={user.username} />
+        <div>
+          <Navbar autenticado={true} username={user.username} />
+          <BrowserRouter>
+            <Switch>
+              <Route exact path="/" component={About} />
+              <Route exact path="/About" component={About} />
+              <Route
+                exact
+                path="/Activities"
+                component={() => <Activities user={user} />}
+              />
+
+              <Route
+                exact
+                path="/MyActivities"
+                component={() => <MyActivities user={user} />}
+              />
+
+              <Route
+                exact
+                path="/Custom"
+                component={() => <Custom user={user} userId={user._id} />}
+              />
+            </Switch>
+          </BrowserRouter>
+        </div>
       ) : (
-        <Navbar autenticado={false} />
+        <div>
+          <Navbar autenticado={false} />
+          <BrowserRouter>
+            <Switch>
+              <Route exact path="/" component={About} />
+              <Route exact path="/About" component={About} />
+            </Switch>
+          </BrowserRouter>
+          <br />
+          <br />
+          <br />
+          <div className="container">
+            <h4>
+              ¡Vaya! Debes iniciar sesión para acceder a esta función.
+            </h4>
+          </div>
+        </div>
       )}
-      <BrowserRouter>
-        <Switch>
-         <Route exact path='/' component={About}/>
-         <Route exact path='/About' component={About}/>
-         <Route exact path='/Activities' component={()=>(<Activities user={user}/>)}/>
-         <Route exact path='/MyActivities' component={()=>(<MyActivities user={user}/>)}/>
-         {user ? (
-         <Route exact path='/Custom' component={()=>(<Custom user={user} userId={user._id} />)}/>
-         ) : (
-           <h1>loggese mijo</h1>
-         )
-         }
-        </Switch>
-      </BrowserRouter>
     </div>
   );
 };

@@ -5,9 +5,12 @@ const MyActivities = (props) => {
     <div className="Guardadas">
       <div className="container" id="menuGuardadas">
         <div className="container">
-          <div classname="Row" id="titulo">
+          <div className="Row" id="titulo">
+            <br />
+            <br />
+            <br />
               <h1>
-                Aca se van a ver las actividades guardadas!!!
+                ¡Acá se van a ver las actividades guardadas!
               </h1>
           </div>
         </div>

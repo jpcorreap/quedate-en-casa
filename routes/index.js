@@ -60,11 +60,11 @@ router.get("/save/:userID/:activityID", (req, res) => {
 
 // Create and persist new personal activity for an specific user
 router.post("/savePersonalActivity/:userID", (req, res) => {
-  console.log("Llegó a mi dataendpoint nuevo con la informacion ", req.params.userID, " y el body \n", req.body );
-  res.redirect("http://localhost:3000/MyActivities");
-  /*bd.users
+  bd.users
     .savePersonalActivity(req.params.userID, req.body)
-    .then(res.redirect("http://localhost:3000/MyActivities"));*/
+    .then((aux) => {
+      res.json(aux);
+    });
 });
 
 module.exports = router;

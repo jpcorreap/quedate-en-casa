@@ -24,7 +24,7 @@ const Register = () => {
             </div>
             <div className="form-group">
               <div className="row">
-                <label>Repita Contraseña:</label>
+                <label>Confirmar contraseña:</label>
                 <input
                   type="password"
                   className="form-control"

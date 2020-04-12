@@ -23,7 +23,7 @@ const Navbar = (props) => {
       <nav className="navbar navbar-expand-lg sticky-top">
         <a id="title" className="navbar-brand" href="/">
           <img
-            src="https://getbootstrap.com/docs/4.4/assets/brand/bootstrap-solid.svg"
+            src="front\public\stayHome.jpg"
             width="30"
             height="30"
             className="d-inline-block align-top"
