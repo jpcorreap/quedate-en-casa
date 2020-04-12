@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react";
 
 const Activities = (props) => {
+  const [actividades, setActividades] = useState([]);
 
-  const [actividades, setActividades]= useState([])
-  
   useEffect(() => {
-    let isSubscribed =true;
+    let isSubscribed = true;
     fetch("/activities")
       .then((res) => res.json())
       .then((actividades) => {
-        if(isSubscribed){setActividades(actividades);
+        if (isSubscribed) {
+          setActividades(actividades);
           console.log("fetched data from activities ", actividades);
         }
       });
-      return () => isSubscribed=false;
+    return () => (isSubscribed = false);
   }, []);
-
 
   return (
     <div className="Activities">
@@ -23,35 +22,89 @@ const Activities = (props) => {
       <br />
       <div className="container">
         <div className="row">
-          <h1>#MeQuedoEnCasa</h1>
+          <h1>
+            <strong>#QuédateEnCasa</strong>
+          </h1>
         </div>
-      </div> 
-      {props.user !== null ? ( 
-      <div className="container">
-        { actividades.map(post => (
-          <div className="card border-primary mb-3" key={post.id}>
-             <div className="card-header">{post.categorias}</div>
-              <div className="card-body" >
-              <h4 className="card-title">{post.titulo}</h4>
-              <p className="card-text">{post.descripcion}</p>
+      </div>
+      {props.user !== null ? (
+        <div className="container">
+          <div className="row justify-content-center">
+            {actividades.map((actividad) => (
+              <div
+                className="card border-primary mb-3 col-md-3"
+                key={actividad._id}
+              >
+                <div className="card-header">
+                  <div className="row">
+                    <div className="col-12">
+                      <h4>{actividad.titulo}</h4>
+                    </div>
+                    <div className="d-flex">
+                      <button
+                        type="button"
+                        class="btn btn-dark ml-auto p-2"
+                        onClick={() => {
+                          window.location =
+                            "http://localhost:3001/save/" +
+                            props.user._id +
+                            "/" +
+                            actividad._id;
+                        }}
+                      >
+                        Guardar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div className="card-body">
+                  <p className="card-text">{actividad.descripcion}</p>
+                  <p>
+                    Accede a este contenido ingresando a{" "}
+                    <a href={actividad.links} target="_blank">
+                      {actividad.nombres_links}
+                    </a>
+                  </p>
+                  <p className="card-text">
+                    <strong>Categorías: </strong>
+                    {actividad.categorias.replace(",", ", ")}.
+                  </p>
+                </div>
               </div>
-              <footer className="w3-container w3-blue">
-              <button className="w3-button w3-black"> Agregar actividad </button>
-              </footer>
+            ))}
           </div>
-  ))}
-</div> ):( 
-      <div className="container">
-        { actividades.map(post => (
-          <div className="card border-primary mb-3" key={post.id}>
-             <div className="card-header">{post.categorias}</div>
-              <div className="card-body" >
-              <h4 className="card-title">{post.titulo}</h4>
-              <p className="card-text">{post.descripcion}</p>
+        </div>
+      ) : (
+        <div className="container">
+          <div className="row justify-content-center">
+            {actividades.map((actividad) => (
+              <div
+                className="card border-primary mb-3 col-md-3"
+                key={actividad._id}
+              >
+                <div className="card-header">
+                  <div className="row">
+                    <h4>{actividad.titulo}</h4>
+                  </div>
+                </div>
+                <div className="card-body">
+                  <p className="card-text">{actividad.descripcion}</p>
+                  <p>
+                    Accede a este contenido ingresando a{" "}
+                    <a href={actividad.links} target="_blank">
+                      {actividad.nombres_links}
+                    </a>
+                  </p>
+                  <p className="card-text">
+                    <strong>Categorías: </strong>
+                    {actividad.categorias.replace(",", ", ")}.
+                  </p>
+                </div>
               </div>
+            ))}
           </div>
-  ))}
-</div> )}   
+        </div>
+      )}
       <br />
       <br />
     </div>

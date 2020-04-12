@@ -1,20 +1,20 @@
-import React  from "react";
+import React from "react";
 import Login from "./Login.js";
 import Register from "./Register.js";
 
 const Navbar = (props) => {
-  
   let loginVisible = false;
   let registerVisible = false;
- 
 
   const mostrarLogin = () => {
-    document.getElementById("menuLogin").style = "visibility:" + ( loginVisible ? "hidden" : "visible" );
+    document.getElementById("menuLogin").style =
+      "visibility:" + (loginVisible ? "hidden" : "visible");
     loginVisible = !loginVisible;
   };
 
   const mostrarRegistro = () => {
-    document.getElementById("menuRegister").style = "visibility:" + ( registerVisible ? "hidden" : "visible" );
+    document.getElementById("menuRegister").style =
+      "visibility:" + (registerVisible ? "hidden" : "visible");
     registerVisible = !registerVisible;
   };
 
@@ -42,23 +42,13 @@ const Navbar = (props) => {
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav">
-              <li className="nav-item">
-                  <a className="nav-link" href="./">
-                    Home
-                  </a>
-                </li>
-              <li className="nav-item">
-                  <a className="nav-link" href="./Activities">
-                    Actividades
-                  </a>
-                </li>
                 <li className="nav-item">
-                  <a className="nav-link" onClick={ mostrarLogin }>
+                  <a className="nav-link" onClick={mostrarLogin}>
                     Ingresar
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" onClick={ mostrarRegistro }>
+                  <a className="nav-link" onClick={mostrarRegistro}>
                     Registrarse
                   </a>
                 </li>
@@ -79,7 +69,7 @@ const Navbar = (props) => {
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                   {props.username}
+                    {props.username}
                   </a>
                   <div
                     className="dropdown-menu"
@@ -112,4 +102,5 @@ const Navbar = (props) => {
     </div>
   );
 };
+
 export default Navbar;

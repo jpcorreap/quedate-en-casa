@@ -21,6 +21,11 @@ a {
 cursor: pointer !important;
 }
 
+.card {
+  padding: 5px;
+  margin: 5px;
+}
+
 .navbar {
   background: rgb(28,176,233);
   background: linear-gradient(180deg, rgba(28,176,233,1) 29%, rgba(2,136,224,1) 72%); 
@@ -30,7 +35,7 @@ cursor: pointer !important;
   color: #0d0d0d;
 }
 
-#menuLogin {
+#menuLogin, #menuRegister {
   visibility: hidden;
   position: absolute;
   background-color: #1cb0e9;
@@ -42,14 +47,9 @@ cursor: pointer !important;
   margin-left: 76.7vw;
 }
 
-#menuRegister {
-  visibility: hidden;
-  position: absolute;
-  background-color: #1cb0e9;
-  padding: 15px;
-  z-index: 3;
-  width: 300px;
-  border-radius: 15px;
-  margin-top: -10px;
-  margin-left: 76.7vw;
+#descripcionAbout {
+  margin-top: 50px;
+  margin-bottom: 10px;
+  text-align: justify;
+  font-size: 1.5em;
 }
