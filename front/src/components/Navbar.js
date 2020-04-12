@@ -65,10 +65,33 @@ const Navbar = (props) => {
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav">
-                <li className="nav-item">
-                  <a className="nav-link" href="./Activities">
+                <li className="nav-item dropdown">
+                <a
+                    className="nav-link dropdown-toggle"
+                    id="navbarDropdown"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
                     Actividades
                   </a>
+                  <div
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdown"
+                  >
+                    <a className="dropdown-item" href="./Activities">
+                      Actividades Generales
+                    </a>
+                    <div className="dropdown-divider"></div>
+                    <a className="dropdown-item" href="./MyActivities">
+                      Mis actividades
+                    </a>
+                    <div className="dropdown-divider"></div>
+                    <a className="dropdown-item" href="./Custom">
+                      Crear actividad
+                    </a>
+                  </div>
                 </li>
                 <li className="nav-item dropdown">
                   <a
@@ -85,14 +108,6 @@ const Navbar = (props) => {
                     className="dropdown-menu"
                     aria-labelledby="navbarDropdown"
                   >
-                    <a className="dropdown-item" href="./MyActivities">
-                      Mis actividades
-                    </a>
-                    <div className="dropdown-divider"></div>
-                    <a className="dropdown-item" href="./Custom">
-                      Crear actividad
-                    </a>
-                    <div className="dropdown-divider"></div>
                     <a
                       className="dropdown-item"
                       href="http://localhost:3001/logout"

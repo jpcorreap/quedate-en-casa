@@ -44,11 +44,29 @@ const MyActivities = (props) => {
               key={basicas._id}
             >
               <div className="card-header">
+                <div>
+                <p className="card-text">
+                  <strong>Categorías: </strong>
+                  {basicas.categorias.replace(",", ", ")}.
+                </p>
+                </div>
+                <br>
+                </br>
                 <div className="row">
                   <div className="col-12">
                     <h4>{basicas.titulo}</h4>
                   </div>
-                  <div className="d-flex">
+                </div>
+              </div>
+              <div className="card-body">
+                <p className="card-text">{basicas.descripcion}</p>
+                <p>
+                  Accede a este contenido ingresando a{" "}
+                  <a href={basicas.links} target="_blank">
+                    {basicas.nombres_links}
+                  </a>
+                </p>
+                <div className="d-flex">
                     <button
                       type="button"
                       className="btn btn-dark ml-auto p-2"
@@ -63,20 +81,7 @@ const MyActivities = (props) => {
                       Eliminar
                     </button>
                   </div>
-                </div>
-              </div>
-              <div className="card-body">
-                <p className="card-text">{basicas.descripcion}</p>
-                <p>
-                  Accede a este contenido ingresando a{" "}
-                  <a href={basicas.links} target="_blank">
-                    {basicas.nombres_links}
-                  </a>
-                </p>
-                <p className="card-text">
-                  <strong>Categorías: </strong>
-                  {basicas.categorias.replace(",", ", ")}.
-                </p>
+            
               </div>
             </div>
           ))}
@@ -89,11 +94,29 @@ const MyActivities = (props) => {
           {props.userActivities.map((guardadas, i) => (
             <div className="card border-primary mb-3 col-md-3" key={i}>
               <div className="card-header">
+                <div>
+                <p className="card-text">
+                  <strong>Categorías: </strong>
+                  {guardadas.categorias.replace(",", ", ")}.
+                </p>
+                </div>
+                <br>
+                </br>
                 <div className="row">
                   <div className="col-12">
                     <h4>{guardadas.titulo}</h4>
                   </div>
-                  <div className="d-flex">
+                </div>
+              </div>
+              <div className="card-body">
+                <p className="card-text">{guardadas.descripcion}</p>
+                <p>
+                  Accede a este contenido ingresando a{" "}
+                  <a href={guardadas.links} target="_blank">
+                    {guardadas.nombres_links}
+                  </a>
+                </p>
+                <div className="d-flex">
                     <button
                       type="button"
                       className="btn btn-dark ml-auto p-2"
@@ -108,20 +131,6 @@ const MyActivities = (props) => {
                       Eliminar
                     </button>
                   </div>
-                </div>
-              </div>
-              <div className="card-body">
-                <p className="card-text">{guardadas.descripcion}</p>
-                <p>
-                  Accede a este contenido ingresando a{" "}
-                  <a href={guardadas.links} target="_blank">
-                    {guardadas.nombres_links}
-                  </a>
-                </p>
-                <p className="card-text">
-                  <strong>Categorías: </strong>
-                  {guardadas.categorias.replace(",", ", ")}.
-                </p>
               </div>
             </div>
           ))}

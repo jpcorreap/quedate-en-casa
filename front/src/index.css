@@ -26,6 +26,14 @@ a {
   margin: 5px;
 }
 
+.card-header{
+  text-align: center;
+}
+.card-body{
+  text-align: justify;
+}
+
+
 .navbar {
   background: rgb(28, 176, 233);
   background: linear-gradient(

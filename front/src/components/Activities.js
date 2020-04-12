@@ -74,10 +74,27 @@ const Activities = (props) => {
                 id={actividad._id}
               >
                 <div className="card-header">
+                  <div>
+                    <p className="card-text">
+                      <strong>Categorías: </strong>
+                      {actividad.categorias.replace(",", ", ")}.
+                    </p>
+                  </div>
+                  <br>
+                  </br>
                   <div className="row">
                     <div className="col-12">
                       <h4>{actividad.titulo}</h4>
                     </div>
+                  </div>
+                </div>
+                <div className="card-body">
+                  <p className="card-text">{actividad.descripcion}</p>
+                  <p>
+                    Accede a este contenido ingresando a{" "}
+                    <a href={actividad.links} target="_blank">
+                      {actividad.nombres_links}
+                    </a>
                     <div className="d-flex">
                       <button
                         type="button"
@@ -93,20 +110,7 @@ const Activities = (props) => {
                         Guardar
                       </button>
                     </div>
-                  </div>
-                </div>
-                <div className="card-body">
-                  <p className="card-text">{actividad.descripcion}</p>
-                  <p>
-                    Accede a este contenido ingresando a{" "}
-                    <a href={actividad.links} target="_blank">
-                      {actividad.nombres_links}
-                    </a>
-                  </p>
-                  <p className="card-text">
-                    <strong>Categorías: </strong>
-                    {actividad.categorias.replace(",", ", ")}.
-                  </p>
+                  </p>   
                 </div>
               </div>
             ))}
@@ -122,6 +126,14 @@ const Activities = (props) => {
                 id={actividad._id}
               >
                 <div className="card-header">
+                <div>
+                    <p className="card-text">
+                      <strong>Categorías: </strong>
+                      {actividad.categorias.replace(",", ", ")}.
+                    </p>
+                  </div>
+                  <br>
+                  </br>
                   <div className="row">
                     <h4>{actividad.titulo}</h4>
                   </div>
@@ -133,10 +145,6 @@ const Activities = (props) => {
                     <a href={actividad.links} target="_blank">
                       {actividad.nombres_links}
                     </a>
-                  </p>
-                  <p className="card-text">
-                    <strong>Categorías: </strong>
-                    {actividad.categorias.replace(",", ", ")}.
                   </p>
                 </div>
               </div>
