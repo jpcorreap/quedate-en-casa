@@ -39,7 +39,7 @@ const App = () => {
               <Route
                 exact
                 path="/MyActivities"
-                component={() => <MyActivities user={user} />}
+                component={() => <MyActivities user={user} userActivities={user.personalActivities} />}
               />
 
               <Route

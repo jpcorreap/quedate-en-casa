@@ -43,7 +43,7 @@ const Activities = (props) => {
                     <div className="d-flex">
                       <button
                         type="button"
-                        class="btn btn-dark ml-auto p-2"
+                        className="btn btn-dark ml-auto p-2"
                         onClick={() => {
                           window.location =
                             "http://localhost:3001/save/" +

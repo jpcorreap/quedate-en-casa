@@ -43,6 +43,11 @@ const Navbar = (props) => {
             >
               <ul className="navbar-nav">
                 <li className="nav-item">
+                  <a className="nav-link" href="./Activities">
+                    Actividades
+                  </a>
+                </li>
+                <li className="nav-item">
                   <a className="nav-link" onClick={mostrarLogin}>
                     Ingresar
                   </a>
@@ -60,6 +65,11 @@ const Navbar = (props) => {
               id="navbarSupportedContent"
             >
               <ul className="navbar-nav">
+                <li className="nav-item">
+                  <a className="nav-link" href="./Activities">
+                    Actividades
+                  </a>
+                </li>
                 <li className="nav-item dropdown">
                   <a
                     className="nav-link dropdown-toggle"
