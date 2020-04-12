@@ -57,15 +57,22 @@ const App = () => {
             <Switch>
               <Route exact path="/" component={About} />
               <Route exact path="/About" component={About} />
+              <Route
+                exact
+                path="/Activities"
+                component={() => <Activities user={null} />}
+              />
             </Switch>
           </BrowserRouter>
           <br />
           <br />
-          <br />
           <div className="container">
-            <h4>
-              ¡Vaya! Debes iniciar sesión para acceder a esta función.
-            </h4>
+            <h5>
+              ¡Inicia sesión para acceder más funcionalidades! Podrás guardar, crear, visualizar y eliminar actividades.
+              <br />
+              <br />
+              <br />
+            </h5>
           </div>
         </div>
       )}

@@ -9,26 +9,36 @@ const About = () => {
         <div className="row">
           <h1>
             <strong>#QuédateEnCasa</strong>
+            <br />
           </h1>
         </div>
-        <div className="container d-flex p-2">
+        <div className="container">
           <h5 id="descripcionAbout">
             Durante estos tiempos de cuarentena obligatoria, tu salud mental es
             muy importante. Es por ello que en este sitio web te recomendamos
             una serie de actividades completamente gratuitas que puedes realizar
             desde la comodidad de tu hogar.
+            <br />
+            <br />
+            <br />
           </h5>
-          <br />
+          <div className="row">
+            <div className="col-5">
+              <h5>Para comenzar, haz click en el siguiente botón:</h5>
+            </div>
+            <div>
+              <button
+                type="button"
+                id="botonVerActividades"
+                className="btn btn-info"
+                onClick={() => (window.location = "./Activities")}
+                autoFocus
+              >
+                <strong>Ver actividades</strong>
+              </button>
+            </div>
+          </div>
         </div>
-        <br />
-        <button
-          type="button"
-          className="btn btn-info"
-          onClick={() => (window.location = "./Activities")}
-          autoFocus
-        >
-          Ver actividades
-        </button>
       </div>
       <br />
       <br />

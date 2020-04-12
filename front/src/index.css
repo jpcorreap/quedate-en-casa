@@ -39,6 +39,11 @@ a {
   color: #0d0d0d;
 }
 
+#botonVerActividades {
+  font-size: x-large;
+  margin-top: -10px;
+}
+
 #nuevaActividadPersonal {
   width: max-content;
   margin: 0 auto;
