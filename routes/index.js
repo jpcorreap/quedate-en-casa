@@ -15,8 +15,8 @@ router.post("/register", (req, res) => {
   try {
     bd.users.findByUsername(req.body.username, (nada, user) => {
       console.log("Llegó el usuario ", user);
-      if(req.body.password == req.body.passwordC) { 
-        if (user == null  ) {
+      if (req.body.password == req.body.passwordC) {
+        if (user == null) {
           let hashedPassword = bu.Accounts.generateHash(req.body.password);
           bd.users
             .create(req.body.username, hashedPassword)
@@ -25,8 +25,7 @@ router.post("/register", (req, res) => {
           console.log(req.body.username, "already exists!");
           res.redirect("/register");
         }
-      }
-      else{
+      } else {
         console.log(req.body.username, " las contrasenas no coinciden!");
         res.redirect("/register");
       }
@@ -50,6 +49,13 @@ router.post("/:userID/activities", (req, res) => {
   bd.actividades.getByUserID(req.params.userID).then((activities) => {
     res.json(activities);
   });
+});
+
+// Save activity for an specific user
+router.get("/save/:userID/:activitieID", (req, res) => {
+  bd.users
+    .saveActivity(req.params.userID, req.params.userID)
+    .then(() => res.redirect("http://localhost:3000/Activities"));
 });
 
 module.exports = router;

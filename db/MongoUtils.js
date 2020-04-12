@@ -2,7 +2,8 @@ const MongoClient = require("mongodb").MongoClient;
 const ObjectID = require("mongodb").ObjectID;
 require("dotenv").config();
 
-const url = "mongodb+srv://vaca:vaca123@cluster0-3lhwp.mongodb.net/test?retryWrites=true&w=majority";
+const url =
+  "mongodb+srv://vaca:vaca123@cluster0-3lhwp.mongodb.net/test?retryWrites=true&w=majority";
 const dbName = "quedateEnCasa";
 
 function MongoUtils() {
@@ -72,7 +73,12 @@ function MongoUtils() {
       const usuarios = client.db(dbName).collection("usuarios");
 
       return usuarios
-        .insertOne({ username: username, password: password })
+        .insertOne({
+          username: username,
+          password: password,
+          savedActivities: [],
+          personalActivities: [],
+        })
         .finally(() => client.close());
     });
 
@@ -102,6 +108,23 @@ function MongoUtils() {
         .then((user) => {
           cb(null, user);
         });
+    });
+
+  // Save an activity for an specific user
+  mu.users.saveActivity = (userID, activityID) =>
+    mu.connect().then((client) => {
+      const usuarios = client.db(dbName).collection("usuarios");
+
+      console.log(
+        "HOLAAA \n Va a agreagarle al arreglo ",
+        userID,
+        ":",
+        activityID
+      );
+
+      return usuarios
+        .updateOne({ _id: new ObjectID(userID) }, { $push: { savedActivities: activityID } })
+        .finally(() => client.close());
     });
 
   return mu;
