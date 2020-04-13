@@ -35,7 +35,7 @@ a {
 
 
 .navbar {
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Hind Vadodara', sans-serif;
   background: rgb(28, 176, 233);
   background: linear-gradient(
     180deg,
@@ -45,16 +45,41 @@ a {
 }
 
 h1 {
-  font-family: 'Libre Baskerville', serif;
+  font-family: 'Hind Vadodara', sans-serif;
+}
+h2 {
+  font-family: 'Hind Vadodara', sans-serif;
+}
+
+h4 {
+  font-family: 'Hind Vadodara', sans-serif;
 }
 
 h5 {
   font-family: 'Source Sans Pro', sans-serif;
 }
+h6 {
+  font-family: 'Source Sans Pro', sans-serif;
+}
 
 li {
-  font-family: 'Libre Baskerville', serif;
-  
+  font-family: 'Hind Vadodara', sans-serif;
+}
+
+button{
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.card-header{
+  font-family: 'Hind Vadodara', sans-serif;
+}
+
+.card-body{
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+#formNuevaActividadPersonal{
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 #menuLogin{
