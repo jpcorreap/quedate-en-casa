@@ -35,12 +35,37 @@ a {
 
 
 .navbar {
+  font-family: 'Libre Baskerville', serif;
   background: rgb(28, 176, 233);
   background: linear-gradient(
     180deg,
     rgba(28, 176, 233, 1) 29%,
     rgba(2, 136, 224, 1) 72%
   );
+}
+
+h1 {
+  font-family: 'Libre Baskerville', serif;
+}
+
+h5 {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+li {
+  font-family: 'Libre Baskerville', serif;
+  
+}
+
+#menuLogin{
+  font-family: 'Source Sans Pro', sans-serif;
+}
+#menuRegister{
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+#footer {
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 #title {
@@ -50,6 +75,7 @@ a {
 #botonVerActividades {
   font-size: x-large;
   margin-top: -10px;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 #nuevaActividadPersonal {

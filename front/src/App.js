@@ -67,7 +67,7 @@ const App = () => {
           <br />
           <br />
           <div className="container">
-            <h5>
+            <h5 id="footer">
               ¡Inicia sesión para acceder más funcionalidades! Podrás guardar, crear, visualizar y eliminar actividades.
               <br />
               <br />

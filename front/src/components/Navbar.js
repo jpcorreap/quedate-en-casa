@@ -29,7 +29,7 @@ const Navbar = (props) => {
             className="d-inline-block align-top"
             alt="Logo"
           />
-          &nbsp; Quédate en casa
+        <strong>&nbsp; Quédate en casa</strong>  
         </a>
 
         <div
@@ -44,17 +44,17 @@ const Navbar = (props) => {
               <ul className="navbar-nav">
                 <li className="nav-item">
                   <a className="nav-link" href="./Activities">
-                    Actividades
+                    <strong>Actividades</strong>
                   </a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" onClick={mostrarLogin}>
-                    Ingresar
+                    <strong>Ingresar</strong>
                   </a>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item" >
                   <a className="nav-link" onClick={mostrarRegistro}>
-                    Registrarse
+                   <strong>Registrarse</strong> 
                   </a>
                 </li>
               </ul>
@@ -74,7 +74,7 @@ const Navbar = (props) => {
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                    Actividades
+                   <strong>Actividades</strong> 
                   </a>
                   <div
                     className="dropdown-menu"
@@ -102,7 +102,7 @@ const Navbar = (props) => {
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                    {props.username}
+                    <strong>{props.username}</strong>
                   </a>
                   <div
                     className="dropdown-menu"
