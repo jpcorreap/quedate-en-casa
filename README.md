@@ -7,16 +7,16 @@ Actualmente solo se puede ejecutar con la vista de servidor de desarrollo. Para 
 ## Paso 1: instalar y ejecutar el backend:
 Para correr el backend de la aplicación, ejecute los siguientes comandos:
 
-`cd quedate-en-casa`
-`yarn`
+`cd quedate-en-casa` <br />
+`yarn`<br />
 `yarn start`
 
 ## Paso 2: instalar y ejecutar el frontend:
 El siguiente paso es ejecutar el front, construido con React. Para ello, ejecute:
 
-`cd quedate-en-casa`
-`cd front`
-`yarn`
+`cd quedate-en-casa`<br />
+`cd front`<br />
+`yarn`<br />
 `yarn start`
 
 Una vez seguidos los pasos anteriores, podrá acceder a la aplicación hosteada en el http://localhost:3000.
