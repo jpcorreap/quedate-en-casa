@@ -14,10 +14,7 @@ app.set("view engine", "ejs");
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "front/build")));
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "front", "build", "index.html"));
-});
+app.use(express.static(path.join(__dirname, "public")));
 
 configurePassport(app);
 configureBcrypt(app);
