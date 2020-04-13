@@ -14,7 +14,6 @@ router.get("/register", (req, res) => {
 router.post("/register", (req, res) => {
   try {
     bd.users.findByUsername(req.body.username, (nada, user) => {
-      console.log("Llegó el usuario ", user);
       if (req.body.password == req.body.passwordC) {
         if (user == null) {
           let hashedPassword = bu.Accounts.generateHash(req.body.password);
@@ -22,11 +21,9 @@ router.post("/register", (req, res) => {
             .create(req.body.username, hashedPassword)
             .then(res.redirect("/login"));
         } else {
-          console.log(req.body.username, "already exists!");
           res.redirect("/register");
         }
       } else {
-        console.log(req.body.username, " las contrasenas no coinciden!");
         res.redirect("/register");
       }
     });
@@ -35,7 +32,9 @@ router.post("/register", (req, res) => {
   }
 });
 
+// ----------------
 // Data endpoints
+// ----------------
 
 // Get all global activities
 router.get("/activities", (req, res) => {

@@ -16,7 +16,7 @@ const Custom = (props) => {
 
     const aux3 = aux.replace(']"', "]");
 
-    fetch("/savePersonalActivity/" + props.userId, {
+    fetch("/savePersonalActivity/a+" + props.userId, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -93,7 +93,7 @@ const Custom = (props) => {
             </div>
           </form>
         </div>
-        <button onClick={saveActivity} className="btn btn-primary">
+        <button onClick={saveActivity} className="btn btn-warning">
           Guardar
         </button>
       </div>

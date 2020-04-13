@@ -20,7 +20,6 @@ router.post("/login", (req, res) => {
   console.log(req.body);
   bd.users.findByUsername(req.body.username).then((user) => {
     try {
-      console.log("se trajo al usuario", user);
       if (bu.Accounts.validPassword(req.body.password, user.password)) {
         passport.authenticate("local", { failureRedirect: "/login" }),
         function (req, res) {
@@ -46,8 +45,11 @@ router.get(
   }
 );
 
+// ----------------
 // Data endpoints
+// ----------------
 
+// Get information of current user
 router.get("/getUser", (req, res) => {
   return res.json(req.user || null);
 });

@@ -12,12 +12,11 @@ const MyActivities = (props) => {
       ids += activity + "+";
     });
 
-    fetch("/findActivitiesByIDs/" + ids)
+    fetch("/findActivitiesByIDs/a+" + ids)
       .then((res) => res.json())
       .then((misactividades) => {
         if (isSubscribed) {
           setMisActividades(misactividades);
-          console.log("fetched data from activities ", misactividades);
         }
       });
     return () => (isSubscribed = false);
@@ -45,13 +44,12 @@ const MyActivities = (props) => {
             >
               <div className="card-header">
                 <div>
-                <p className="card-text">
-                  <strong>Categorías: </strong>
-                  {basicas.categorias.replace(",", ", ")}.
-                </p>
+                  <p className="card-text">
+                    <strong>Categorías: </strong>
+                    {basicas.categorias.replace(",", ", ")}.
+                  </p>
                 </div>
-                <br>
-                </br>
+                <br></br>
                 <div className="row">
                   <div className="col-12">
                     <h4>{basicas.titulo}</h4>
@@ -62,26 +60,29 @@ const MyActivities = (props) => {
                 <p className="card-text">{basicas.descripcion}</p>
                 <p>
                   Accede a este contenido ingresando a{" "}
-                  <a href={basicas.links} target="_blank" rel="noopener noreferrer">
+                  <a
+                    href={basicas.links}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {basicas.nombres_links}
                   </a>
                 </p>
                 <div className="d-flex">
-                    <button
-                      type="button"
-                      className="btn btn-dark ml-auto p-2"
-                      onClick={() => {
-                        window.location =
-                          "http://localhost:3001/deleteSavedActivity/" +
-                          props.user._id +
-                          "/" +
-                          basicas._id;
-                      }}
-                    >
-                      Eliminar
-                    </button>
-                  </div>
-            
+                  <button
+                    type="button"
+                    className="btn btn-dark ml-auto p-2"
+                    onClick={() => {
+                      window.location =
+                        "http://localhost:3001/deleteSavedActivity/" +
+                        props.user._id +
+                        "/" +
+                        basicas._id;
+                    }}
+                  >
+                    Eliminar
+                  </button>
+                </div>
               </div>
             </div>
           ))}
@@ -95,13 +96,12 @@ const MyActivities = (props) => {
             <div className="card border-primary mb-3 col-md-3" key={i}>
               <div className="card-header">
                 <div>
-                <p className="card-text">
-                  <strong>Categorías: </strong>
-                  {guardadas.categorias.replace(",", ", ")}.
-                </p>
+                  <p className="card-text">
+                    <strong>Categorías: </strong>
+                    {guardadas.categorias.replace(",", ", ")}.
+                  </p>
                 </div>
-                <br>
-                </br>
+                <br></br>
                 <div className="row">
                   <div className="col-12">
                     <h4>{guardadas.titulo}</h4>
@@ -111,26 +111,30 @@ const MyActivities = (props) => {
               <div className="card-body">
                 <p className="card-text">{guardadas.descripcion}</p>
                 <p>
-                 Link:{" "}
-                  <a href={guardadas.link} target="_blank" rel="noopener noreferrer">
+                  Link:{" "}
+                  <a
+                    href={guardadas.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {guardadas.link}
                   </a>
                 </p>
                 <div className="d-flex">
-                    <button
-                      type="button"
-                      className="btn btn-dark ml-auto p-2"
-                      onClick={() => {
-                        window.location =
-                          "http://localhost:3001/deletePersonalActivity/" +
-                          props.user._id +
-                          "/" +
-                          guardadas.titulo;
-                      }}
-                    >
-                      Eliminar
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    className="btn btn-dark ml-auto p-2"
+                    onClick={() => {
+                      window.location =
+                        "http://localhost:3001/deletePersonalActivity/" +
+                        props.user._id +
+                        "/" +
+                        guardadas.titulo;
+                    }}
+                  >
+                    Eliminar
+                  </button>
+                </div>
               </div>
             </div>
           ))}

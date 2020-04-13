@@ -106,7 +106,7 @@ const Navbar = (props) => {
               transform="translate(-2 -2)"
             />
           </svg>
-          <strong>&nbsp; Quédate en casa</strong>
+          <strong>&nbsp;Inicio&nbsp;&nbsp;</strong>
         </a>
 
         <div

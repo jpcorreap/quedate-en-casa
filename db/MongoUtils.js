@@ -130,11 +130,6 @@ function MongoUtils() {
 
   // Delete an activity of a specific user
   mu.users.deletePersonalActivity = (user, titleToDelete) => {
-    console.log("AL ELIMINAR ACTIVIDAD PERSONAL LLEGARON LOS VALORES:");
-    console.log("USERID ", user._id);
-    console.log("personalActivities ");
-    console.log("Title to delete ", titleToDelete);
-
     let newPersonalActivites = [];
 
     user.personalActivities.forEach((personalActivity) => {

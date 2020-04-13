@@ -25,7 +25,6 @@ const Activities = (props) => {
       .then((actividades) => {
         if (isSubscribed) {
           setActividades(actividades);
-          console.log("fetched data from activities ", actividades);
         }
       });
     return () => (isSubscribed = false);
@@ -52,7 +51,7 @@ const Activities = (props) => {
             />
             <button
               onClick={filtrarActividades}
-              className="btn btn-outline-success my-2 my-sm-0"
+              className="btn btn-warning my-2 my-sm-0"
             >
               Filtrar
             </button>
@@ -91,30 +90,40 @@ const Activities = (props) => {
                   <p className="card-text">{actividad.descripcion}</p>
                   <p>
                     Accede a este contenido ingresando a{" "}
-                    <a href={actividad.links} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={actividad.links}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       {actividad.nombres_links}
                     </a>
                   </p>
-                  <div className="d-flex">
-                    {!props.user.savedActivities
-                      .toString()
-                      .includes(actividad._id) ? (
-                      <button
-                        type="button"
-                        className="btn btn-dark ml-auto p-2"
-                        onClick={() => {
-                          window.location =
-                            "http://localhost:3001/save/" +
-                            props.user._id +
-                            "/" +
-                            actividad._id;
-                        }}
-                      >
-                        Guardar
-                      </button>
-                    ) : (
-                      <span className="btn-success ml-auto p-2">Guardada</span>
-                    )}
+                  <div height="100%" className="row">
+                    <div className="col align-self-end">
+                      <div className="d-flex">
+                        {!props.user.savedActivities
+                          .toString()
+                          .includes(actividad._id) ? (
+                          <button
+                            type="button"
+                            className="btn btn-dark ml-auto p-2"
+                            onClick={() => {
+                              window.location =
+                                "http://localhost:3001/save/" +
+                                props.user._id +
+                                "/" +
+                                actividad._id;
+                            }}
+                          >
+                            Guardar
+                          </button>
+                        ) : (
+                          <span className="yaGuardada ml-auto p-2">
+                            Guardada
+                          </span>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -146,7 +155,11 @@ const Activities = (props) => {
                   <p className="card-text">{actividad.descripcion}</p>
                   <p>
                     Accede a este contenido ingresando a{" "}
-                    <a href={actividad.links} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={actividad.links}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       {actividad.nombres_links}
                     </a>
                   </p>

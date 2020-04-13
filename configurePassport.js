@@ -12,7 +12,6 @@ const bu = require("./db/BcryptUtils.js");
 // will be set at `req.user` in route handlers after authentication.
 passport.use(new Strategy(
   function(username, password, cb) {
-    console.log("OJOOO! Entró a localStrategy a validar: ", username, ":", password);
     db.users.findByUsername(username, function(err, user) {
       if (err) { return cb(err); }
       if (!user) { return cb(null, false); }
@@ -33,7 +32,6 @@ passport.serializeUser(function(user, cb) {
 });
 
 passport.deserializeUser(function(id, cb) {
-  console.log( "Va a deserializar con el ID ", id );
   db.users.findOneById(id, function (err, user) {
     if (err) { return cb(err); }
     cb(null, user);

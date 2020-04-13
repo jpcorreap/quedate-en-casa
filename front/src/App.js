@@ -16,7 +16,6 @@ const App = () => {
       .then((user) => {
         if (user) {
           setUser(user);
-          console.log("Seteó al usuario ", user);
         }
       });
   }, []);
@@ -39,7 +38,12 @@ const App = () => {
               <Route
                 exact
                 path="/MyActivities"
-                component={() => <MyActivities user={user} userActivities={user.personalActivities} />}
+                component={() => (
+                  <MyActivities
+                    user={user}
+                    userActivities={user.personalActivities}
+                  />
+                )}
               />
 
               <Route
@@ -68,9 +72,8 @@ const App = () => {
           <br />
           <div className="container">
             <h5 id="footer">
-              ¡Inicia sesión para acceder más funcionalidades! Podrás guardar, crear, visualizar y eliminar actividades.
-              <br />
-              <br />
+              ¡Inicia sesión para acceder a muchas más funcionalidades! Podrás
+              guardar, crear, eliminar y visualizar tus actividades.
               <br />
             </h5>
           </div>
