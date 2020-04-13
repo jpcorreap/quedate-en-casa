@@ -3,6 +3,10 @@ Sitio web que da ideas a las personas de qué hacer durante la cuarentena. Puede
 
 ![Thumbnail de la aplicacion](https://dl.dropboxusercontent.com/s/mv8wtvr322paxhk/AppDemoQuedateEnCasa.png)
 
+# Tecnologías usadas
+Se utiliza un servidor de Express.js que ejecuta el backend en el puerto 3001. Se usa Mongo Atlas como base de datos. Para el frontend se usó React. La autenticación se realiza con Passport.js y Bcrypt.
+
+
 # ¿Cómo ejecutar la aplicación?
 Actualmente solo se puede ejecutar con la vista de servidor de desarrollo. Para ello siga los siguientes pasos. Note que debe tener yarn instalado en su computador y descargar mediante git clone este repositorio.
 
@@ -22,3 +26,5 @@ El siguiente paso es ejecutar el front, construido con React. Para ello, ejecute
 `yarn start`
 
 Una vez seguidos los pasos anteriores, podrá acceder a la aplicación hosteada en el http://localhost:3000.
+
+Creado por Juan Pablo Correa y Juan Sebastián Vaca. (Licencia MIT)[https://github.com/jpcorreap/quedate-en-casa/blob/master/LICENSE]
