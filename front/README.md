@@ -1,10 +1,12 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+El front se realizó con [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Cómo correr el front
 
-In the project directory, you can run:
+En esta carpeta front, correr:
 
-### `npm start`
+### `yarn start`
+
+## Esta es información generada automáticamente por ReactCreateApp:
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
