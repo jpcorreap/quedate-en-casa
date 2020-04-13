@@ -81,6 +81,7 @@ router.get("/deletePersonalActivity/:userID/:activityTitle", (req, res) => {
 });
 
 // Get all activities specified in JSON file
+//Hola, la busqueda de string que esten incluidos se puede hacer en la base de datos, el find({}) de mongo accepta regex por lo que esto se puede hacer desde la base de datos. Ejemplo: find({"_id": {$regex :".*req.params.ids.*"} }), así te evitas la logica en e index.js. 
 router.get("/findActivitiesByIDs/:ids", (req, res) => {
   bd.actividades.getAll().then((activities) => {
     let retornar = [];
