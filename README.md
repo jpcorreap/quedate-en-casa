@@ -1,5 +1,7 @@
 # Quédate en casa
-Proyecto que da ideas a las personas de qué hacer durante la cuarentena.
+Sitio web que da ideas a las personas de qué hacer durante la cuarentena. Puede crear una cuenta para guardar, editar, eliminar y crear actividades. Encriptamos las contraseñas para hacer más segura la aplicación.
+
+![Thumbnail de la aplicacion](https://dl.dropboxusercontent.com/s/mv8wtvr322paxhk/AppDemoQuedateEnCasa.png)
 
 # ¿Cómo ejecutar la aplicación?
 Actualmente solo se puede ejecutar con la vista de servidor de desarrollo. Para ello siga los siguientes pasos. Note que debe tener yarn instalado en su computador y descargar mediante git clone este repositorio.
