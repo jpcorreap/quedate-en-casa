@@ -4,6 +4,7 @@ require("dotenv").config();
 
 const url =
   "mongodb+srv://vaca:vaca123@cluster0-3lhwp.mongodb.net/test?retryWrites=true&w=majority";
+
 const dbName = "quedateEnCasa";
 
 function MongoUtils() {
@@ -118,19 +119,41 @@ function MongoUtils() {
         .finally(() => client.close())
     );
 
-  // Delete an activity of a specific user
-  mu.users.deletePersonalActivity = (userID, activityName) =>
+  mu.users.getPersonalActivities = (userID) =>
     mu.connect().then((client) =>
+      client
+        .db("quedateEnCasa")
+        .collection("usuarios")
+        .findOne({ _id: new ObjectID(userID) }) // when searching by id we need to create an ObjectID
+        .finally(() => client.close())
+    );
+
+  // Delete an activity of a specific user
+  mu.users.deletePersonalActivity = (user, titleToDelete) => {
+    console.log("AL ELIMINAR ACTIVIDAD PERSONAL LLEGARON LOS VALORES:");
+    console.log("USERID ", user._id);
+    console.log("personalActivities ");
+    console.log("Title to delete ", titleToDelete);
+
+    let newPersonalActivites = [];
+
+    user.personalActivities.forEach((personalActivity) => {
+      if (personalActivity.titulo !== titleToDelete) {
+        newPersonalActivites.push(personalActivity);
+      }
+    });
+
+    return mu.connect().then((client) =>
       client
         .db(dbName)
         .collection("usuarios")
         .updateOne(
-          { _id: new ObjectID(userID) },
-          { $pull: { savedActivities: { $in: { nombre: activityName } } } },
-          { multi: true }
+          { _id: new ObjectID(user._id) },
+          { $set: { personalActivities: newPersonalActivites } }
         )
         .finally(() => client.close())
     );
+  };
 
   return mu;
 }

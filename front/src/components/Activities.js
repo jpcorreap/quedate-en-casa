@@ -80,8 +80,7 @@ const Activities = (props) => {
                       {actividad.categorias.replace(",", ", ")}.
                     </p>
                   </div>
-                  <br>
-                  </br>
+                  <br></br>
                   <div className="row">
                     <div className="col-12">
                       <h4>{actividad.titulo}</h4>
@@ -95,7 +94,11 @@ const Activities = (props) => {
                     <a href={actividad.links} target="_blank">
                       {actividad.nombres_links}
                     </a>
-                    <div className="d-flex">
+                  </p>
+                  <div className="d-flex">
+                    {!props.user.savedActivities
+                      .toString()
+                      .includes(actividad._id) ? (
                       <button
                         type="button"
                         className="btn btn-dark ml-auto p-2"
@@ -109,8 +112,10 @@ const Activities = (props) => {
                       >
                         Guardar
                       </button>
-                    </div>
-                  </p>   
+                    ) : (
+                      <span className="btn-success ml-auto p-2">Guardada</span>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
@@ -126,14 +131,13 @@ const Activities = (props) => {
                 id={actividad._id}
               >
                 <div className="card-header">
-                <div>
+                  <div>
                     <p className="card-text">
                       <strong>Categorías: </strong>
                       {actividad.categorias.replace(",", ", ")}.
                     </p>
                   </div>
-                  <br>
-                  </br>
+                  <br></br>
                   <div className="row">
                     <h4>{actividad.titulo}</h4>
                   </div>

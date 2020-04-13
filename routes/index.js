@@ -73,10 +73,12 @@ router.get("/deleteSavedActivity/:userID/:activityID", (req, res) => {
 });
 
 // Delete personal activity for an specific user
-router.get("/deletePersonalActivity/:userID/:nameActivity", (req, res) => {
-  bd.users
-    .deletePersonalActivity(req.params.userID, req.params.nameActivity)
-    .then(() => res.redirect("http://localhost:3000/MyActivities"));
+router.get("/deletePersonalActivity/:userID/:activityTitle", (req, res) => {
+  bd.users.getPersonalActivities(req.params.userID).then((user) => {
+    bd.users
+      .deletePersonalActivity(user, req.params.activityTitle)
+      .then(res.redirect("http://localhost:3000"));
+  });
 });
 
 // Get all activities specified in JSON file

@@ -1,0 +1,2 @@
+# Set your database URL here
+DB_URL = "mongodb+srv://vaca:vaca123@cluster0-3lhwp.mongodb.net/test?retryWrites=true&w=majority"

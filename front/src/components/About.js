@@ -23,20 +23,15 @@ const About = () => {
             <br />
           </h5>
           <div className="row">
-            <div className="col-5">
-              <h5>Para comenzar, haz click en el siguiente botón:</h5>
-            </div>
-            <div>
-              <button
-                type="button"
-                id="botonVerActividades"
-                className="btn btn-info"
-                onClick={() => (window.location = "./Activities")}
-                autoFocus
-              >
-                <strong>Ver actividades</strong>
-              </button>
-            </div>
+            <button
+              type="button"
+              id="botonVerActividades"
+              className="btn btn-info"
+              onClick={() => (window.location = "./Activities")}
+              autoFocus
+            >
+              <strong>Ver actividades</strong>
+            </button>
           </div>
         </div>
       </div>

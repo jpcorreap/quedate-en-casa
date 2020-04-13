@@ -36,7 +36,7 @@ const MyActivities = (props) => {
       </div>
 
       <div className="container">
-        <h2>las guardadas</h2>
+        <h2>Actividades guardadas:</h2>
         <div className="row justify-content-center">
           {misactividades.map((basicas) => (
             <div
@@ -89,7 +89,7 @@ const MyActivities = (props) => {
       </div>
 
       <div className="container">
-        <h2>las creadas</h2>
+        <h2>Actividades creadas:</h2>
         <div className="row justify-content-center">
           {props.userActivities.map((guardadas, i) => (
             <div className="card border-primary mb-3 col-md-3" key={i}>
@@ -111,9 +111,9 @@ const MyActivities = (props) => {
               <div className="card-body">
                 <p className="card-text">{guardadas.descripcion}</p>
                 <p>
-                  Accede a este contenido ingresando a{" "}
-                  <a href={guardadas.links} target="_blank">
-                    {guardadas.nombres_links}
+                 Link:{" "}
+                  <a href={guardadas.link} target="_blank">
+                    {guardadas.link}
                   </a>
                 </p>
                 <div className="d-flex">
@@ -122,7 +122,7 @@ const MyActivities = (props) => {
                       className="btn btn-dark ml-auto p-2"
                       onClick={() => {
                         window.location =
-                          "http://localhost:3001/save/" +
+                          "http://localhost:3001/deletePersonalActivity/" +
                           props.user._id +
                           "/" +
                           guardadas.titulo;
