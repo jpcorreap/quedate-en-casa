@@ -62,7 +62,7 @@ const MyActivities = (props) => {
                 <p className="card-text">{basicas.descripcion}</p>
                 <p>
                   Accede a este contenido ingresando a{" "}
-                  <a href={basicas.links} target="_blank">
+                  <a href={basicas.links} target="_blank" rel="noopener noreferrer">
                     {basicas.nombres_links}
                   </a>
                 </p>
@@ -112,7 +112,7 @@ const MyActivities = (props) => {
                 <p className="card-text">{guardadas.descripcion}</p>
                 <p>
                  Link:{" "}
-                  <a href={guardadas.link} target="_blank">
+                  <a href={guardadas.link} target="_blank" rel="noopener noreferrer">
                     {guardadas.link}
                   </a>
                 </p>

@@ -14,7 +14,6 @@ const Custom = (props) => {
       link: inLink,
     });
 
-    const aux2 = aux.replace('"[', "[");
     const aux3 = aux.replace(']"', "]");
 
     fetch("/savePersonalActivity/" + props.userId, {
