@@ -18,6 +18,7 @@ const Navbar = (props) => {
     registerVisible = !registerVisible;
   };
 
+  //Hola, esto es mas una recomendación de organización. La clase es muy larga los componentes se pueden modularizar mucho mas, de esta manera es mas facil de encontrar errores y de leer el codigo.
   return (
     <div>
       <nav className="navbar navbar-expand-lg sticky-top">
