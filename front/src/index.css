@@ -26,16 +26,15 @@ a {
   margin: 5px;
 }
 
-.card-header{
+.card-header {
   text-align: center;
 }
-.card-body{
+.card-body {
   text-align: justify;
 }
 
-
 .navbar {
-  font-family: 'Hind Vadodara', sans-serif;
+  font-family: "Hind Vadodara", sans-serif;
   background: rgb(28, 176, 233);
   background: linear-gradient(
     180deg,
@@ -45,52 +44,61 @@ a {
 }
 
 h1 {
-  font-family: 'Hind Vadodara', sans-serif;
+  font-family: "Hind Vadodara", sans-serif;
 }
 h2 {
-  font-family: 'Hind Vadodara', sans-serif;
+  font-family: "Hind Vadodara", sans-serif;
 }
 
 h4 {
-  font-family: 'Hind Vadodara', sans-serif;
+  font-family: "Hind Vadodara", sans-serif;
 }
 
 h5 {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 h6 {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 li {
-  font-family: 'Hind Vadodara', sans-serif;
+  font-family: "Hind Vadodara", sans-serif;
 }
 
-button{
-  font-family: 'Source Sans Pro', sans-serif;
+.cls-1 {
+  fill: red;
+}
+.cls-2 {
+  fill: #fff;
+  stroke: #fff;
+  stroke-miterlimit: 10;
 }
 
-.card-header{
-  font-family: 'Hind Vadodara', sans-serif;
+button {
+  font-family: "Source Sans Pro", sans-serif;
 }
 
-.card-body{
-  font-family: 'Source Sans Pro', sans-serif;
+.card-header {
+  font-family: "Hind Vadodara", sans-serif;
 }
 
-#formNuevaActividadPersonal{
-  font-family: 'Source Sans Pro', sans-serif;
+.card-body {
+  font-family: "Source Sans Pro", sans-serif;
 }
 
-#menuLogin{
-  font-family: 'Source Sans Pro', sans-serif;
+#formNuevaActividadPersonal {
+  font-family: "Source Sans Pro", sans-serif;
 }
-#menuRegister{
-  font-family: 'Source Sans Pro', sans-serif;
+
+#menuLogin {
+  font-family: "Source Sans Pro", sans-serif;
+}
+#menuRegister {
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 #footer {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 #title {
@@ -100,7 +108,7 @@ button{
 #botonVerActividades {
   font-size: x-large;
   margin-top: -10px;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 #nuevaActividadPersonal {
