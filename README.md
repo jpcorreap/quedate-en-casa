@@ -27,4 +27,4 @@ El siguiente paso es ejecutar el front, construido con React. Para ello, ejecute
 
 Una vez seguidos los pasos anteriores, podrá acceder a la aplicación hosteada en el http://localhost:3000.
 
-Creado por Juan Pablo Correa y Juan Sebastián Vaca. (Licencia MIT)[https://github.com/jpcorreap/quedate-en-casa/blob/master/LICENSE]
+Creado por Juan Pablo Correa y Juan Sebastián Vaca. [Licencia MIT](https://github.com/jpcorreap/quedate-en-casa/blob/master/LICENSE)
