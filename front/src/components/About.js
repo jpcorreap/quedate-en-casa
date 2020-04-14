@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import imagenHome from "./imagenHome.png";
 
 const About = () => {
   return (
-    <div className="Home">
+    <div className="About">
       <br />
       <br />
       <br />
@@ -11,6 +12,12 @@ const About = () => {
         <div className="row">
           <div className="img-container fluid col-5">
             <img src={imagenHome} width="100%"></img>
+            <p>
+              Fuente:{" "}
+              <a href="https://www.freepik.com/free-photos-vectors/home">
+                Freepik
+              </a>
+            </p>
           </div>
 
           <div className="col-7">
@@ -29,9 +36,10 @@ const About = () => {
               type="button"
               id="botonVerActividades"
               className="btn btn-warning"
-              onClick={() => (window.location = "./Activities")}
             >
-              <strong>Ver actividades</strong>
+              <Link to={"/Activities"}>
+                <strong>Ver actividades</strong>
+              </Link>
             </button>
           </div>
         </div>

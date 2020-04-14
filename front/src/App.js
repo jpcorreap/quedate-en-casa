@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar.js";
 import About from "./components/About.js";
@@ -9,6 +9,7 @@ import MyActivities from "./components/MyActivities.js";
 
 const App = () => {
   const [user, setUser] = useState(null);
+  const [actividades, setActividades] = useState([]);
 
   useEffect(() => {
     fetch("/getUser")
@@ -20,54 +21,56 @@ const App = () => {
       });
   }, []);
 
+  useEffect(() => {
+    fetch("/getAllActivities")
+      .then((res) => res.json())
+      .then((actividades) => {
+        if (actividades) {
+          setActividades(actividades);
+        }
+      });
+  }, []);
+
   return (
     <div className="App">
       {user ? (
         <div>
           <Navbar autenticado={true} username={user.username} />
-          <BrowserRouter>
-            <Switch>
-              <Route exact path="/" component={About} />
-              <Route exact path="/About" component={About} />
-              <Route
-                exact
-                path="/Activities"
-                component={() => <Activities user={user} />}
-              />
 
-              <Route
-                exact
-                path="/MyActivities"
-                component={() => (
-                  <MyActivities
-                    user={user}
-                    userActivities={user.personalActivities}
-                  />
-                )}
-              />
+          <Switch>
+            <Route exact path="/">
+              <About />
+            </Route>
 
-              <Route
-                exact
-                path="/Custom"
-                component={() => <Custom user={user} userId={user._id} />}
+            <Route exact path="/Activities">
+              <Activities user={user} actividades={actividades} />
+            </Route>
+
+            <Route exact path="/MyActivities">
+              <MyActivities
+                user={user}
+                actividades={actividades}
               />
-            </Switch>
-          </BrowserRouter>
+            </Route>
+
+            <Route exact path="/Custom">
+              <Custom user={user} />
+            </Route>
+          </Switch>
         </div>
       ) : (
         <div>
           <Navbar autenticado={false} />
-          <BrowserRouter>
-            <Switch>
-              <Route exact path="/" component={About} />
-              <Route exact path="/About" component={About} />
-              <Route
-                exact
-                path="/Activities"
-                component={() => <Activities user={null} />}
-              />
-            </Switch>
-          </BrowserRouter>
+
+          <Switch>
+            <Route exact path="/">
+              <About />
+            </Route>
+
+            <Route exact path="/Activities">
+              <Activities user={null} actividades={actividades} />
+            </Route>
+          </Switch>
           <br />
           <br />
           <div className="container">

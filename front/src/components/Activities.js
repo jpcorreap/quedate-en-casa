@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const Activities = (props) => {
-  const [actividades, setActividades] = useState([]);
-
   const filtrarActividades = () => {
     let filtro = document.getElementById("barraBusquedaCategoria").value;
 
     // Oculta las actividades que no se desean ver y deja visibles las de interés
-    actividades.forEach((actividad) => {
+    props.actividades.forEach((actividad) => {
       if (actividad.categorias.includes(filtro)) {
         document.getElementById(actividad._id).style.visibility = "visible";
         document.getElementById(actividad._id).style.position = "relative";
@@ -17,18 +15,6 @@ const Activities = (props) => {
       }
     });
   };
-
-  useEffect(() => {
-    let isSubscribed = true;
-    fetch("/activities")
-      .then((res) => res.json())
-      .then((actividades) => {
-        if (isSubscribed) {
-          setActividades(actividades);
-        }
-      });
-    return () => (isSubscribed = false);
-  }, []);
 
   return (
     <div className="Activities">
@@ -66,7 +52,7 @@ const Activities = (props) => {
       {props.user !== null ? (
         <div className="container">
           <div className="row justify-content-center">
-            {actividades.map((actividad) => (
+            {props.actividades.map((actividad) => (
               <div
                 className="card border-primary mb-3 col-md-3"
                 key={actividad._id}
@@ -108,11 +94,10 @@ const Activities = (props) => {
                             type="button"
                             className="btn btn-dark ml-auto p-2"
                             onClick={() => {
+                              props.user.savedActivities.push(actividad._id);
+
                               window.location =
-                                "http://localhost:3001/save/" +
-                                props.user._id +
-                                "/" +
-                                actividad._id;
+                                "/save/" + props.user._id + "/" + actividad._id;
                             }}
                           >
                             Guardar
@@ -133,7 +118,7 @@ const Activities = (props) => {
       ) : (
         <div className="container">
           <div className="row justify-content-center">
-            {actividades.map((actividad) => (
+            {props.actividades.map((actividad) => (
               <div
                 className="card border-primary mb-3 col-md-3"
                 key={actividad._id}

@@ -3,14 +3,6 @@ const router = express.Router();
 const bd = require("../db/MongoUtils.js");
 const bu = require("../db/BcryptUtils.js");
 
-router.get("/", function (req, res) {
-  res.render("home", { user: req.user });
-});
-
-router.get("/register", (req, res) => {
-  res.render("register");
-});
-
 router.post("/register", (req, res) => {
   try {
     bd.users.findByUsername(req.body.username, (nada, user) => {
@@ -19,12 +11,12 @@ router.post("/register", (req, res) => {
           let hashedPassword = bu.Accounts.generateHash(req.body.password);
           bd.users
             .create(req.body.username, hashedPassword)
-            .then(res.redirect("/login"));
+            .then(res.redirect("/"));
         } else {
-          res.redirect("/register");
+          res.redirect("/");
         }
       } else {
-        res.redirect("/register");
+        res.redirect("/");
       }
     });
   } catch (e) {
@@ -32,12 +24,25 @@ router.post("/register", (req, res) => {
   }
 });
 
+// Para facilitar la interacción del usuario
+router.get("/MyActivities", (req, res) => {
+  res.redirect("/");
+});
+
+router.get("/Activities", (req, res) => {
+  res.redirect("/");
+});
+
+router.get("/Custom", (req, res) => {
+  res.redirect("/");
+});
+
 // ----------------
 // Data endpoints
 // ----------------
 
 // Get all global activities
-router.get("/activities", (req, res) => {
+router.get("/getAllActivities", (req, res) => {
   bd.actividades.getAll().then((activities) => {
     res.json(activities);
   });
@@ -54,21 +59,21 @@ router.post("/:userID/activities", (req, res) => {
 router.get("/save/:userID/:activityID", (req, res) => {
   bd.users
     .saveActivity(req.params.userID, req.params.activityID)
-    .then(() => res.redirect("http://localhost:3000/Activities"));
+    .then(() => res.redirect("/"));
 });
 
 // Create and persist new personal activity for an specific user
 router.post("/savePersonalActivity/:userID", (req, res) => {
-  bd.users.savePersonalActivity(req.params.userID, req.body).then((aux) => {
-    res.json(aux);
-  });
+  bd.users
+    .savePersonalActivity(req.params.userID, req.body)
+    .then(() => res.redirect("/"));
 });
 
 // Delete saved activity for an specific user
 router.get("/deleteSavedActivity/:userID/:activityID", (req, res) => {
   bd.users
     .deleteSavedActivity(req.params.userID, req.params.activityID)
-    .then(() => res.redirect("http://localhost:3000/MyActivities"));
+    .then(() => res.redirect("/"));
 });
 
 // Delete personal activity for an specific user
@@ -76,7 +81,7 @@ router.get("/deletePersonalActivity/:userID/:activityTitle", (req, res) => {
   bd.users.getPersonalActivities(req.params.userID).then((user) => {
     bd.users
       .deletePersonalActivity(user, req.params.activityTitle)
-      .then(res.redirect("http://localhost:3000"));
+      .then(() => res.redirect("/"));
   });
 });
 

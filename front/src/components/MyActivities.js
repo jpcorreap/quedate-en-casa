@@ -19,6 +19,7 @@ const MyActivities = (props) => {
           setMisActividades(misactividades);
         }
       });
+
     return () => (isSubscribed = false);
   }, []);
 
@@ -27,15 +28,16 @@ const MyActivities = (props) => {
       <br />
       <br />
       <div className="container">
-        <div className="row">
-          <h1>
-            <strong>#QuédateEnCasa</strong>
-          </h1>
-        </div>
+        <h1>
+          <strong>Actividades guardadas de {props.user.username}</strong>
+          <br />
+        </h1>
       </div>
 
       <div className="container">
-        <h2>Actividades guardadas:</h2>
+        <h2>
+          Tus actividades de <strong>#QuédateEnCasa</strong>:
+        </h2>
         <div className="row justify-content-center">
           {misactividades.map((basicas) => (
             <div
@@ -74,7 +76,7 @@ const MyActivities = (props) => {
                     className="btn btn-dark ml-auto p-2"
                     onClick={() => {
                       window.location =
-                        "http://localhost:3001/deleteSavedActivity/" +
+                        "/deleteSavedActivity/" +
                         props.user._id +
                         "/" +
                         basicas._id;
@@ -90,10 +92,13 @@ const MyActivities = (props) => {
       </div>
 
       <div className="container">
-        <h2>Actividades creadas:</h2>
+        <h2>Tus actividades personales:</h2>
         <div className="row justify-content-center">
-          {props.userActivities.map((guardadas, i) => (
-            <div className="card border-primary mb-3 col-md-3" key={i}>
+          {props.user.personalActivities.map((guardadas) => (
+            <div
+              className="card border-primary mb-3 col-md-3"
+              key={guardadas.descripcion}
+            >
               <div className="card-header">
                 <div>
                   <p className="card-text">
@@ -111,7 +116,7 @@ const MyActivities = (props) => {
               <div className="card-body">
                 <p className="card-text">{guardadas.descripcion}</p>
                 <p>
-                  Link:{" "}
+                  Enlace:{" "}
                   <a
                     href={guardadas.link}
                     target="_blank"
@@ -126,7 +131,7 @@ const MyActivities = (props) => {
                     className="btn btn-dark ml-auto p-2"
                     onClick={() => {
                       window.location =
-                        "http://localhost:3001/deletePersonalActivity/" +
+                        "/deletePersonalActivity/" +
                         props.user._id +
                         "/" +
                         guardadas.titulo;

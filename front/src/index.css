@@ -12,6 +12,7 @@ body {
 
 #navbarDropdown {
   cursor: pointer;
+  color: #212529;
 }
 
 .dropdown-menu {
@@ -23,11 +24,11 @@ code {
     monospace;
 }
 
-a {
+a, Link {
   cursor: pointer !important;
 }
 
-a:hover {
+li > a:hover {
   background: #f1d258;
 }
 
@@ -48,38 +49,11 @@ a:hover {
   background: #f1890c;
 }
 
-h1 {
-  font-family: "Hind Vadodara", sans-serif;
-}
-h2 {
+h1, h2, h3, h4, h5, h6, li {
   font-family: "Hind Vadodara", sans-serif;
 }
 
-h4 {
-  font-family: "Hind Vadodara", sans-serif;
-}
-
-h5 {
-  font-family: "Source Sans Pro", sans-serif;
-}
-h6 {
-  font-family: "Source Sans Pro", sans-serif;
-}
-
-li {
-  font-family: "Hind Vadodara", sans-serif;
-}
-
-.cls-1 {
-  fill: red;
-}
-.cls-2 {
-  fill: #fff;
-  stroke: #fff;
-  stroke-miterlimit: 10;
-}
-
-button {
+button, .card-body, #formNuevaActividadPersonal, #footer {
   font-family: "Source Sans Pro", sans-serif;
 }
 
@@ -87,27 +61,8 @@ button {
   font-family: "Hind Vadodara", sans-serif;
 }
 
-.card-body {
-  font-family: "Source Sans Pro", sans-serif;
-}
-
-#formNuevaActividadPersonal {
-  font-family: "Source Sans Pro", sans-serif;
-}
-
-#menuLogin {
-  font-family: "Source Sans Pro", sans-serif;
-}
-#menuRegister {
-  font-family: "Source Sans Pro", sans-serif;
-}
-
-#footer {
-  font-family: "Source Sans Pro", sans-serif;
-}
-
-#title {
-  color: #0d0d0d;
+#title, strong {
+  color: #212529;
 }
 
 #botonVerActividades {
@@ -125,6 +80,7 @@ button {
 
 #menuLogin,
 #menuRegister {
+  font-family: "Source Sans Pro", sans-serif;
   visibility: hidden;
   position: absolute;
   background-color: #f1890c;
@@ -153,13 +109,13 @@ button {
 }
 
 .yaGuardada {
-  color: #000;
+  color: #212529;
   background-color: #ffc107;
   border-color: #ffc107;
 }
 
 .yaGuardada:hover {
-  color: #000;
+  color: #212529;
   background-color: #f1890c;
   border-color: #f1890c;
 }

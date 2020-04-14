@@ -7,22 +7,27 @@ const Custom = (props) => {
     let inCategorias = document.getElementById("categorias").value;
     let inLink = document.getElementById("link").value;
 
-    const aux = JSON.stringify({
+    const actividad = {
       titulo: inTitulo,
       descripcion: inDescripcion,
       categorias: inCategorias,
       link: inLink,
-    });
+    };
 
-    const aux3 = aux.replace(']"', "]");
+    const json = JSON.stringify(actividad)
+      .replace(']"', "]")
+      .replace('"[', "[");
 
-    fetch("/savePersonalActivity/a+" + props.userId, {
+    fetch("/savePersonalActivity/" + props.user._id, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: aux3,
-    }).then(() => (window.location = "/MyActivities"));
+      body: json,
+    }).then(() => {
+      props.user.personalActivities.push(actividad);
+      window.location = "/";
+    });
   };
 
   return (
