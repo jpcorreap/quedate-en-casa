@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <style>
+    body {
+      width: 300px;
+      height: 200px;
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <textarea class="form-control rounded-0" id="parrafo" rows="10"></textarea>
+    </div>
+    <br />
+    <div class="row">
+      <button class="btn btn-primary" onclick="ejecutarAPI()">Enviar</button>
+    </div>
+    <br />
+    <br />
+    <div class="container">
+      <table class="table table-bordered" id="records" style="visibility: hidden;">
+        <thead class="thead-dark" id="recordsTableHead" style="text-align: center;">
+          <tr scope="col">Palabra(s)</tr>
+          <tr scope="col">Importancia</tr>
+          <tr scope="col">No. de apariciones</tr>
+        </thead>
+        <tbody id="recordsTableBody"></tbody>
+      </table>
+    </div>
+
+    <script>
+      const ejecutarAPI = () => {
+        const mitexto = document.getElementById("parrafo").value;
+        const tbody = document.getElementById("recordsTableBody");
+
+        const aEnviar = { texto: mitexto };
+
+        fetch("/postRespuesta", {
+          method: "POST",
+          body: JSON.stringify(aEnviar),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .catch((error) => console.error("Error:", error))
+          .then((respuesta) => {
+            if (respuesta) {
+              console.log("Llegaron las palabras clave ", respuesta);
+
+              respuesta.forEach((register) => {
+                let tr = document.createElement("tr");
+
+                // Iterates over record's values
+                const td1 = document.createElement("td");
+                td1.textContent = register["keyword"];
+                tr.appendChild(td);
+
+                const td2 = document.createElement("td");
+                td.textContent = register["keyword"];
+                tr.appendChild(td);
+
+                const td3 = document.createElement("td");
+                td.textContent = register["keyword"];
+                tr.appendChild(td);
+
+                tbody.appendChild(tr);
+              });
+            }
+          });
+      };
+    </script>
+</body>
+</html>

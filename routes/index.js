@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bd = require("../db/MongoUtils.js");
 const bu = require("../db/BcryptUtils.js");
+const blockspring = require("blockspring");
 
 router.post("/register", (req, res) => {
   try {
@@ -98,6 +99,77 @@ router.get("/findActivitiesByIDs/:ids", (req, res) => {
 
     res.json(retornar);
   });
+});
+
+// Extra dataendpoints
+router.get("/legalwatch", (req, res) => {
+  res.render("legalwatch", {});
+});
+
+router.post("/postRespuesta", (req, res) => {
+  blockspring.runParsed(
+    "spanish-keyword-extractor-monkeylearn",
+    { text: req.body.texto },
+    { api_key: process.env.BLOCKSPRING_KEY},
+    function (resAPI) {
+      res.json(resAPI.params.keywords);
+    }
+  );
+});
+
+router.get("/pruebalegalwatch", (req, res) => {
+  res.json([
+    {
+      count: 3,
+      relevance: "0.968",
+      positions_in_text: [49, 285, 309],
+      keyword: "cuenta",
+    },
+    {
+      count: 2,
+      relevance: "0.645",
+      positions_in_text: [64, 295],
+      keyword: "acceso",
+    },
+    {
+      count: 1,
+      relevance: "0.484",
+      positions_in_text: [74],
+      keyword: "portal EXATEC",
+    },
+    {
+      count: 1,
+      relevance: "0.484",
+      positions_in_text: [330],
+      keyword: "correo EXATEC",
+    },
+    {
+      count: 1,
+      relevance: "0.484",
+      positions_in_text: [5],
+      keyword: "Juan Pablo",
+    },
+    {
+      count: 1,
+      relevance: "0.323",
+      positions_in_text: [169],
+      keyword: "lapso",
+    },
+    {
+      count: 3,
+      relevance: "0.323",
+      positions_in_text: [81, 235, 337],
+      keyword: "EXATEC",
+    },
+    {
+      count: 1,
+      relevance: "0.323",
+      positions_in_text: [227],
+      keyword: "noreply",
+    },
+    { count: 1, relevance: "0.323", positions_in_text: [256], keyword: "liga" },
+    { count: 1, relevance: "0.323", positions_in_text: [242], keyword: "tec" },
+  ]);
 });
 
 module.exports = router;

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "bcrypt": "^4.0.1",
+    "blockspring": "0.0.6",
     "body-parser": "^1.19.0",
     "connect-ensure-login": "^0.1.1",
     "connect-flash": "^0.1.1",
@@ -19,8 +20,8 @@
     "express": "~4.16.1",
     "express-session": "^1.17.0",
     "mongodb": "^3.5.5",
-    "passport": "^0.4.1",
     "morgan": "^1.10.0",
+    "passport": "^0.4.1",
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
