@@ -20,6 +20,7 @@ configurePassport(app);
 configureBcrypt(app);
 
 app.use("/", indexRouter);
+// Para que la url de passport comience de manera distinta a las demas se puede poner app.use("/auth", passportRoutes). De esta manera la url siempre comenzara con auth y sera mas facil de identificar por el usuario y el desarrollador. 
 app.use("/", passportRoutes);
 
 module.exports = app;
