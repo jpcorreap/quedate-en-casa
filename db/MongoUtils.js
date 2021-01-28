@@ -128,6 +128,14 @@ function MongoUtils() {
     );
 
   // Delete an activity of a specific user
+  // Hola, si necesita remover un objeto de una lista en mongo, hay que usra el $pull operator. Ejemplo: 
+  //db.mycollection.update(
+  //  { _id: new ObjectID(user._id) }, 
+  //  { $pull: { "personalActivities" : { id: "un identificador unico" } } },
+  //false,
+  //true 
+  //);
+  //y con esto se eliminaria solo el objeto. 
   mu.users.deletePersonalActivity = (user, titleToDelete) => {
     let newPersonalActivites = [];
 
